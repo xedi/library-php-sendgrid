@@ -1,6 +1,7 @@
 {
     "name": "xedi/sendgrid",
     "description": "SendGrid PHP Library",
+    "version": "5.8.32",
     "type": "library",
     "require": {
         "guzzlehttp/guzzle": "^6.3",
