@@ -15,7 +15,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Installing Dependencies
         shell: bash
-        run: make composer-install
+        run: make -f ci.Makefile composer-install
       - name: Linting for code smell
         shell: bash
-        run: make phpcs
+        run: make -f ci.Makefile phpcs

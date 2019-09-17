@@ -8,9 +8,6 @@
     <file>lib</file>
     <file>tests</file>
 
-    <!-- Show Progress -->
-    <arg value="p" />
-
     <rule ref="PSR12"></rule>
     <rule ref="PSR2.Files.EndFileNewline"/>
 </ruleset>
