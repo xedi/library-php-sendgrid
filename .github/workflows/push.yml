@@ -15,7 +15,7 @@ jobs:
       - name: Docker login
         uses: azure/container-actions/docker-login@master
         with:
-          user: ${{ secrets.DOCKER_USERNAME }}
+          username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Installing Dependencies
         shell: bash
@@ -27,7 +27,7 @@ jobs:
       - name: Docker login
         uses: azure/container-actions/docker-login@master
         with:
-          user: ${{ secrets.DOCKER_USERNAME }}
+          username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Linting for code smell
         shell: bash
