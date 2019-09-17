@@ -3,9 +3,10 @@
 namespace Xedi\SendGrid\Clients;
 
 use GuzzleHttp\Client as GuzzleClient;
-use Psr\Http\Message\ResponseInterface;
+use Xedi\SendGrid\Clients\HandlesExceptions;
 use Xedi\SendGrid\Clients\HttpResponse;
 use Xedi\SendGrid\Contracts\Client as ClientContract;
+use Xedi\SendGrid\Contracts\Response as ResponseInterface;
 use Xedi\SendGrid\Contracts\Response;
 
 /**
@@ -14,6 +15,8 @@ use Xedi\SendGrid\Contracts\Response;
  */
 class ApiClient implements ClientContract\Client
 {
+    use HandlesExceptions;
+
     /**
      * @var GuzzleClient $client
      */
@@ -49,8 +52,7 @@ class ApiClient implements ClientContract\Client
      */
     public function get(string $uri, array $params = [], array $headers = []): ResponseInterface
     {
-
-        return $this->client->get($uri, $params);
+        return $this->makeRequest('GET', $uri, $params, $headers);
     }
 
     /**
@@ -62,8 +64,7 @@ class ApiClient implements ClientContract\Client
      */
     public function post(string $uri, array $data = [], array $headers = []): ResponseInterface
     {
-
-        return $this->client->post($uri, $data);
+        return $this->makeRequest('POST', $uri, $params, $headers);
     }
 
     /**
@@ -75,8 +76,7 @@ class ApiClient implements ClientContract\Client
      */
     public function patch(string $uri, array $data = [], array $headers = []): ResponseInterface
     {
-
-        return $this->client->patch($uri, $data);
+        return $this->makeRequest('PATCH', $uri, $data, $headers);
     }
 
     /**
@@ -88,7 +88,27 @@ class ApiClient implements ClientContract\Client
      */
     public function delete(string $uri, array $data = [], array $headers = []): ResponseInterface
     {
+        return $this->makeRequest('DELETE', $uri, $data, $headers);
+    }
 
-        return $this->client->delete($uri, $data);
+    /**
+     * Make the Request to SendGrid
+     *
+     * @param  string $method  HTTP Verb
+     * @param  string $uri     URI of the resource to interact with
+     * @param  array  $data    Data to send
+     * @param  array  $headers HTTP Headers
+     *
+     * @todo Document Exception Types
+     *
+     * @return ResponseInterface
+     */
+    protected function makeRequest(
+        string $method,
+        string $uri,
+        array $data = [],
+        array $headers = []
+    ): ResponseInterface {
+
     }
 }
