@@ -3,11 +3,13 @@
 namespace Xedi\SendGrid\Clients;
 
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Exception\GuzzleException;
 use Xedi\SendGrid\Clients\HandlesExceptions;
 use Xedi\SendGrid\Clients\HttpResponse;
 use Xedi\SendGrid\Contracts\Client as ClientContract;
 use Xedi\SendGrid\Contracts\Response as ResponseInterface;
 use Xedi\SendGrid\Contracts\Response;
+use Xedi\SendGrid\Exceptions\SendGridUnreacheable as SendGridUnreacheableException;
 
 /**
  * Class ApiClient
@@ -35,7 +37,8 @@ class ApiClient implements ClientContract\Client
                 [
                     'base_uri' => 'https://api.sendgrid.com/v3',
                     'headers' => [
-                        'Authorization' => "Bearer $api_key"
+                        'Authorization' => "Bearer $api_key",
+                        'Content-Type' => 'application/json'
                     ]
                 ],
                 $options
@@ -109,6 +112,27 @@ class ApiClient implements ClientContract\Client
         array $data = [],
         array $headers = []
     ): ResponseInterface {
+        try {
+            $response = $this->client->request(
+                $method,
+                $uri,
+                array_merge(
+                    [
+                        'headers' => $headers
+                    ],
+                    $params
+                )
+            );
 
+            return new HttpResponse((string) $response->getBody());
+        } catch (ConnectException $exception) {
+            throw SendGridUnreacheableException::fromConnectionException(
+                $exception
+            );
+        } catch (GuzzleException $exception) {
+            throw $this->handleException($exception);
+        } catch (Throwable $exception) {
+            // TODO: Developer Exception
+        }
     }
 }
