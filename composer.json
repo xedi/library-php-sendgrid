@@ -1,5 +1,5 @@
 {
-    "name": "xedi/sendgrid",
+    "name": "xedi/library-php-sendgrid",
     "description": "SendGrid PHP Library",
     "version": "5.8.32",
     "type": "library",
@@ -31,7 +31,8 @@
         "psr-4": {
         },
         "classmap": [
-            "lib/"
+            "lib/",
+            "tests/"
         ]
     },
     "suggest": {
