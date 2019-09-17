@@ -4,6 +4,7 @@
     "version": "5.8.32",
     "type": "library",
     "require": {
+        "php": "^7.1.3",
         "guzzlehttp/guzzle": "^6.3",
         "illuminate/support": "5.8.32"
     },
@@ -23,16 +24,14 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "Xedi\\SendGrid\\": "src/"
+            "Xedi\\SendGrid\\": "lib/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
         },
         "classmap": [
-            "src/",
-            "tests/"
+            "lib/"
         ]
     },
     "suggest": {
