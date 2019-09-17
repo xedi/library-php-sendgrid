@@ -33,6 +33,9 @@
         "classmap": [
             "lib/",
             "tests/"
+        ],
+        "files": [
+            "lib/helpers.php"
         ]
     },
     "suggest": {

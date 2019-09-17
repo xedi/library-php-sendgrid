@@ -5,6 +5,10 @@ namespace Xedi\SendGrid\Mail;
 use Xedi\SendGrid\Contracts\Client;
 use Xedi\SendGrid\Contracts\Mailable;
 use Xedi\SendGrid\Contracts\Response;
+use Xedi\SendGrid\Mail\Concerns\HasContent;
+use Xedi\SendGrid\Mail\Concerns\HasRecipients;
+use Xedi\SendGrid\Mail\Concerns\HasSender;
+use Xedi\SendGrid\Mail\Concerns\HasSubject;
 
 /**
  * Class Mail
@@ -12,19 +16,30 @@ use Xedi\SendGrid\Contracts\Response;
  */
 class Mail implements Mailable
 {
+    use HasContent;
+    use HasRecipients;
+    use HasSender;
+    use HasSubject;
 
     /**
-     * @param Client\Client $client
+     * Validate the Mailable is sufficiently setup to be sent
      *
-     * @return Response
+     * @return void
+     */
+    public function validate(): void
+    {
+
+    }
+
+    /**
+     * Send the Mailable
+     *
+     * @param  Client\Client $client Transmission Adapter
+     *
+     * @return Response An implementation of the Response contract
      */
     public function send(Client\Client $client): Response
     {
-        // TODO: Implement send() method.
-    }
 
-    public function validate(): void
-    {
-        // TODO: Implement validate() method.
     }
 }

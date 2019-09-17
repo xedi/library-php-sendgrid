@@ -14,7 +14,6 @@ use Xedi\SendGrid\Mail\Mail;
  */
 class SendGrid
 {
-
     /**
      * The API Client responsible for communicating with SendGrid
      *
@@ -64,6 +63,6 @@ class SendGrid
      */
     public function send(Mailable $mail_item)
     {
-        ///mail/send
+        return $mail_item->send($this->client);
     }
 }
