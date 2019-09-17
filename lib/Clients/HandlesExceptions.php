@@ -16,6 +16,5 @@ trait HandlesExceptions
      */
     protected function handleException(GuzzleException $exception): ExceptionContract
     {
-
     }
 }
