@@ -10,6 +10,7 @@ class Arr
      * Determine whether the given value is array accessible.
      *
      * @param  mixed  $value
+     *
      * @return bool
      */
     public static function accessible($value)
@@ -22,6 +23,7 @@ class Arr
      *
      * @param  \ArrayAccess|array  $array
      * @param  string|int  $key
+     *
      * @return bool
      */
     public static function exists($array, $key)
@@ -39,6 +41,7 @@ class Arr
      * @param  \ArrayAccess|array  $array
      * @param  string  $key
      * @param  mixed   $default
+     *
      * @return mixed
      */
     public static function get($array, $key, $default = null)
