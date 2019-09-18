@@ -2,8 +2,8 @@
 
 namespace Xedi\SendGrid\Contracts;
 
-use Xedi\SendGrid\Contracts\Client;
-use Xedi\SendGrid\Contracts\Response;
+use Xedi\SendGrid\Contracts\Clients\Client;
+use Xedi\SendGrid\Contracts\Clients\Response;
 
 /**
  * @internal Mailable
@@ -24,7 +24,7 @@ interface Mailable
      *
      * @return Response An implementation of the Response contract
      */
-    final public function send(Client\Client $client): Response;
+    final public function send(Client $client): Response;
 
     /**
      * Add a Recipient

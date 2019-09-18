@@ -2,7 +2,7 @@
 
 namespace Xedi\SendGrid\Clients;
 
-use Xedi\SendGrid\Contracts\Response;
+use Xedi\SendGrid\Contracts\Clients\Response;
 
 class HttpResponse implements Response
 {

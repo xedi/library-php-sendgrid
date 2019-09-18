@@ -4,7 +4,7 @@ namespace Xedi\SendGrid;
 
 use Xedi\SendGrid\Clients\ApiClient;
 use Xedi\SendGrid\Clients\MockClient;
-use Xedi\SendGrid\Contracts\Client as ClientContract;
+use Xedi\SendGrid\Contracts\Clients\Client as ClientContract;
 use Xedi\SendGrid\Contracts\Mailable;
 use Xedi\SendGrid\Mail\Mail;
 

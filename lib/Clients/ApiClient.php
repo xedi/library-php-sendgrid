@@ -6,16 +6,15 @@ use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
 use Xedi\SendGrid\Clients\HandlesExceptions;
 use Xedi\SendGrid\Clients\HttpResponse;
-use Xedi\SendGrid\Contracts\Client as ClientContract;
-use Xedi\SendGrid\Contracts\Response as ResponseInterface;
-use Xedi\SendGrid\Contracts\Response;
+use Xedi\SendGrid\Contracts\Clients\Client as ClientContract;
+use Xedi\SendGrid\Contracts\Clients\Response as ResponseContract;
 use Xedi\SendGrid\Exceptions\SendGridUnreacheable as SendGridUnreacheableException;
 
 /**
  * Class ApiClient
  * @package Xedi\SendGrid\Clients
  */
-class ApiClient implements ClientContract\Client
+class ApiClient implements ClientContract
 {
     use HandlesExceptions;
 
@@ -51,9 +50,9 @@ class ApiClient implements ClientContract\Client
      * @param array  $params
      * @param array  $headers
      *
-     * @return ResponseInterface
+     * @return ResponseContract
      */
-    public function get(string $uri, array $params = [], array $headers = []): ResponseInterface
+    public function get(string $uri, array $params = [], array $headers = []): ResponseContract
     {
         return $this->makeRequest('GET', $uri, $params, $headers);
     }
@@ -63,9 +62,9 @@ class ApiClient implements ClientContract\Client
      * @param array  $data
      * @param array  $headers
      *
-     * @return ResponseInterface
+     * @return ResponseContract
      */
-    public function post(string $uri, array $data = [], array $headers = []): ResponseInterface
+    public function post(string $uri, array $data = [], array $headers = []): ResponseContract
     {
         return $this->makeRequest('POST', $uri, $params, $headers);
     }
@@ -75,9 +74,9 @@ class ApiClient implements ClientContract\Client
      * @param array  $data
      * @param array  $headers
      *
-     * @return ResponseInterface
+     * @return ResponseContract
      */
-    public function patch(string $uri, array $data = [], array $headers = []): ResponseInterface
+    public function patch(string $uri, array $data = [], array $headers = []): ResponseContract
     {
         return $this->makeRequest('PATCH', $uri, $data, $headers);
     }
@@ -87,9 +86,9 @@ class ApiClient implements ClientContract\Client
      * @param array  $data
      * @param array  $headers
      *
-     * @return ResponseInterface
+     * @return ResponseContract
      */
-    public function delete(string $uri, array $data = [], array $headers = []): ResponseInterface
+    public function delete(string $uri, array $data = [], array $headers = []): ResponseContract
     {
         return $this->makeRequest('DELETE', $uri, $data, $headers);
     }
@@ -104,14 +103,14 @@ class ApiClient implements ClientContract\Client
      *
      * @todo Document Exception Types
      *
-     * @return ResponseInterface
+     * @return ResponseContract
      */
     protected function makeRequest(
         string $method,
         string $uri,
         array $data = [],
         array $headers = []
-    ): ResponseInterface {
+    ): ResponseContract {
         try {
             $response = $this->client->request(
                 $method,

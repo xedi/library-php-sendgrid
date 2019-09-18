@@ -3,14 +3,14 @@
 namespace Xedi\SendGrid\Clients;
 
 use Xedi\SendGrid\Clients\MockResponse;
-use Xedi\SendGrid\Contracts\Client as ClientContract;
-use Xedi\SendGrid\Contracts\Response;
+use Xedi\SendGrid\Contracts\Clients\Client as ClientContract;
+use Xedi\SendGrid\Contracts\Clients\Response;
 
 /**
  * Class MockClient
  * @package Xedi\SendGrid\Clients
  */
-class MockClient implements ClientContract\Client
+class MockClient implements ClientContract
 {
     public function get(string $uri, array $params = [], array $headers = []): Response
     {

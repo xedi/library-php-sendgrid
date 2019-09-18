@@ -1,6 +1,6 @@
 <?php
 
-namespace Xedi\SendGrid\Contracts\Client;
+namespace Xedi\SendGrid\Contracts\Clients;
 
 use Psr\Http\Message\ResponseInterface;
 

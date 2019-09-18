@@ -2,9 +2,9 @@
 
 namespace Xedi\SendGrid\Mail;
 
-use Xedi\SendGrid\Contracts\Client;
+use Xedi\SendGrid\Contracts\Clients\Client;
+use Xedi\SendGrid\Contracts\Clients\Response;
 use Xedi\SendGrid\Contracts\Mailable;
-use Xedi\SendGrid\Contracts\Response;
 use Xedi\SendGrid\Mail\Concerns\HasContent;
 use Xedi\SendGrid\Mail\Concerns\HasRecipients;
 use Xedi\SendGrid\Mail\Concerns\HasSender;
