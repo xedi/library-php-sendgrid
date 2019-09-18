@@ -24,11 +24,14 @@ class Mail implements Mailable
     /**
      * Validate the Mailable is sufficiently setup to be sent
      *
-     * @return void
+     * @return static
      */
-    public function validate(): void
+    final public function validate(): self
     {
-
+        return $this->validateContent()
+            ->validateRecipients()
+            ->validateSender()
+            ->validateSubject();
     }
 
     /**
@@ -38,8 +41,7 @@ class Mail implements Mailable
      *
      * @return Response An implementation of the Response contract
      */
-    public function send(Client\Client $client): Response
+    final public function send(Client\Client $client): Response
     {
-
     }
 }
