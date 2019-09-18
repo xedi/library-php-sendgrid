@@ -43,5 +43,16 @@ class Mail implements Mailable
      */
     final public function send(Client\Client $client): Response
     {
+        $this->validate();
+
+        $data = array_merge_recursive(
+            [],
+            $this->buildContent(),
+            $this->buildRecipients(),
+            $this->buildSender(),
+            $this->buildSubject(),
+        );
+
+        return $client->post('mail/send', $data);
     }
 }

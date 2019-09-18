@@ -60,4 +60,16 @@ trait HasSubject
 
         return $this;
     }
+
+    /**
+     * Build the Subject data for the API Request
+     *
+     * @return string API data
+     */
+    public function buildSubject(): array
+    {
+        return [
+            'subject' => $this->subject
+        ];
+    }
 }

@@ -60,4 +60,16 @@ trait HasSender
 
         return $this;
     }
+
+    /**
+     * Build the Sender data for the API Request
+     *
+     * @return array API data
+     */
+    public function buildSender(): array
+    {
+        return [
+            'from' => $this->from->toArray()
+        ];
+    }
 }

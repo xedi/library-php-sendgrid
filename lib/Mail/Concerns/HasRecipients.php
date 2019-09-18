@@ -89,4 +89,23 @@ trait HasRecipients
 
         return $this;
     }
+
+    /**
+     * Build the Recipients data for the API request
+     *
+     * @return array API data
+     */
+    public function buildRecipients(): array
+    {
+         return [
+            'personalizations' => [
+                'to' => array_map(
+                    $this->recipients,
+                    function ($recipient) {
+                        return $recipient->toArray()
+                    }
+                )
+            ]
+         ];
+    }
 }

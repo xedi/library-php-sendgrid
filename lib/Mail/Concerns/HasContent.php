@@ -83,4 +83,21 @@ trait HasContent
 
         return $this;
     }
+
+    /**
+     * Build Content
+     *
+     * @return array Content block of the api request
+     */
+    public function buildContent(): array
+    {
+        return [
+            'content' => array_map(
+                $this->content,
+                function ($content) {
+                    return $content->toArray()
+                }
+            )
+        ];
+    }
 }

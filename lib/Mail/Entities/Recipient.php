@@ -2,23 +2,13 @@
 
 namespace Xedi\SendGrid\Mail\Entities;
 
-use Xedi\SendGrid\Mail\Entities\Entity;
+use Xedi\SendGrid\Mail\Entities\Person;
 
 /**
  * Recipient Class
- * @package Xedi\SendGrid\Mail\Entities\Recipient
+ *
+ * {@inheritdoc}
  */
-class Recipient extends Entity
+class Recipient extends Person
 {
-    /**
-     * @param string      $email_address Recipient Email Address
-     * @param string|null $name          Recipient Name
-     */
-    public function __construct(string $email_address, string $name = null)
-    {
-        parent::__construct([
-            'email' => $email_address,
-            'name' => $name
-        ]);
-    }
 }

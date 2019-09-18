@@ -6,7 +6,10 @@ use Xedi\SendGrid\Mail\Entities\Entity;
 
 /**
  * Content Class
- * @package Xedi\SendGrid\Mail\Entities\Content
+ *
+ * @package Xedi\SendGrid\Mail\Entities
+ * @property string $mine_type MimeType of the content
+ * @property string $content   Raw Content
  */
 class Content extends Entity
 {

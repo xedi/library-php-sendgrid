@@ -72,6 +72,13 @@ interface Mailable
     public function validateRecipients(): self;
 
     /**
+     * Build the Recipients data for the API request
+     *
+     * @return array API data
+     */
+    public function buildRecipients(): array;
+
+    /**
      * Add some content to the Mailable class
      *
      * @param string $mime_type Type of content to add
@@ -116,6 +123,13 @@ interface Mailable
     public function validateContent(): self;
 
     /**
+     * Build Content
+     *
+     * @return array Content block of the api request
+     */
+    public function buildContent(): array;
+
+    /**
      * Set the Sender
      *
      * @param string      $email_address Email address of the Sender
@@ -143,6 +157,13 @@ interface Mailable
      * @return static
      */
     public function validateSender(): self;
+
+    /**
+     * Build the Sender data for the API Request
+     *
+     * @return array API data
+     */
+    public function buildSender(): array;
 
     /**
      * Set the Subject for the Mailable
@@ -173,4 +194,11 @@ interface Mailable
      * @return static
      */
     public function validateSubject(): self;
+
+    /**
+     * Build the Subject data for the API Request
+     *
+     * @return string API data
+     */
+    public function buildSubject(): array;
 }

@@ -2,8 +2,13 @@
 
 namespace Xedi\SendGrid\Mail\Entities;
 
-use Xedi\SendGrid\Mail\Entities\Recipient;
+use Xedi\SendGrid\Mail\Entities\Person;
 
-class Sender extends Recipient
+/**
+ * Sender Class
+ *
+ * {@inheritdoc}
+ */
+class Sender extends Person
 {
 }
