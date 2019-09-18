@@ -10,4 +10,13 @@
 
     <rule ref="PSR12"></rule>
     <rule ref="PSR2.Files.EndFileNewline"/>
+    <rule ref="Generic.Commenting">
+        <exclude-pattern>*/tests/*</exclude-pattern>
+    </rule>
+    <rule ref="PEAR.Commenting">
+        <exclude name="PEAR.Commenting.FileComment.Missing" />
+        <exclude name="PEAR.Commenting.ClassComment.MissingCategoryTag" />
+        <exclude name="PEAR.Commenting.ClassComment.MissingLicenseTag" />
+        <exclude-pattern>*/tests/*</exclude-pattern>
+    </rule>
 </ruleset>

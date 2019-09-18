@@ -10,23 +10,26 @@ use Xedi\SendGrid\Mail\Mail;
 
 /**
  * Class SendGrid
+ *
  * @package Xedi\SendGrid
+ * @author  Chris Smith  <chris@xedi.com>
+ * @link    https://github.io/xedi/sendgrid SendGrid documentation
  */
 class SendGrid
 {
     /**
      * The API Client responsible for communicating with SendGrid
      *
-     * @static
-     *
-     * @var ClientContract\Client
+     * @var ClientContract
      */
     protected static $client;
 
     /**
-     * @param ClientContract\Client $client
+     * Set the Transport Client for the library
+     *
+     * @param ClientContract $client
      */
-    public static function setClient(ClientContract\Client $client)
+    public static function setClient(ClientContract $client)
     {
         static::$client = $client;
     }
