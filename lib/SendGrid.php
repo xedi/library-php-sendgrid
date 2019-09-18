@@ -27,7 +27,7 @@ class SendGrid
     /**
      * Set the Transport Client for the library
      *
-     * @param ClientContract $client
+     * @param ClientContract $client A Client
      */
     public static function setClient(ClientContract $client)
     {
