@@ -46,6 +46,20 @@ class ApiClient implements ClientContract
     }
 
     /**
+     * Set Client
+     *
+     * @param GuzzleClient $client
+     *
+     * @return static
+     */
+    public function setClient(GuzzleClient $client): self
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
      * @param string $uri
      * @param array  $params
      * @param array  $headers
