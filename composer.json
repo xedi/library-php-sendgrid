@@ -1,5 +1,5 @@
 {
-    "name": "xedi/library-php-sendgrid",
+    "name": "xedi/sendgrid",
     "description": "SendGrid PHP Library",
     "version": "5.8.32",
     "type": "library",
