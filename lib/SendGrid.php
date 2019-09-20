@@ -44,7 +44,7 @@ class SendGrid
      *
      * @return ApiClient
      */
-    public static function getClient(string $api_key, array $options = [])
+    public static function getApiClient(string $api_key, array $options = [])
     {
         return new ApiClient($api_key, $options);
     }
