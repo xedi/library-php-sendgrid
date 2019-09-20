@@ -19,4 +19,4 @@ phpcs:
 	docker run --rm \
 	--volume $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))):/web/html \
 	--user $(id -u):$(id -g) \
-	xediltd/pdk-phpcs:ci-latest
+	xediltd/phpcs:ci-latest
