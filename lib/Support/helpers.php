@@ -4,9 +4,9 @@ if (! function_exists('array_every')) {
     /**
      * Determine if all the items in an array pass the given truth test.
      *
-     * @param  array         $array    Array to be tested
-     * @param  callable|null $callable Truth test
-     *a
+     * @param array         $array    Array to be tested
+     * @param callable|null $callable Truth test
+     *
      * @return bool
      */
     function array_every(array $array, callable $callable = null): bool
@@ -24,8 +24,8 @@ if (! function_exists('reject')) {
     /**
      * Create an array of all elements that do not pass a given truth test.
      *
-     * @param  array $array
-     * @param  mixed $callable
+     * @param array $array    Array to be tested
+     * @param mixed $callable Truth test
      *
      * @return array
      */
@@ -48,8 +48,8 @@ if (! function_exists('optional')) {
     /**
      * Provide access to optional objects.
      *
-     * @param  mixed         $value
-     * @param  callable|null $callback
+     * @param mixed         $value    Value that is optional
+     * @param callable|null $callable Optional callable to be invoked if the value is null
      *
      * @return mixed
      */
