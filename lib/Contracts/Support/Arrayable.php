@@ -2,6 +2,13 @@
 
 namespace Xedi\SendGrid\Contracts\Support;
 
+/**
+ * Arrayable Interface
+ *
+ * @internal
+ * @package  Xedi\SendGrid\Contracts\Support
+ * @author   Chris Smith <chris@xedi.com>
+ */
 interface Arrayable
 {
     /**

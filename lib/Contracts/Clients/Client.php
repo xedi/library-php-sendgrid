@@ -5,12 +5,19 @@ namespace Xedi\SendGrid\Contracts\Clients;
 use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;
 
+/**
+ * Client Contract
+ *
+ * @internal
+ * @package  Xedi\SendGrid\Contracts\Clients
+ * @author   Chris Smith <chris@xedi.com>
+ */
 interface Client
 {
     /**
      * Set Client
      *
-     * @param GuzzleClient $client
+     * @param GuzzleClient $client HTTP Client
      *
      * @return static
      */
@@ -19,9 +26,9 @@ interface Client
     /**
      * Perform a GET request
      *
-     * @param  string $uri
-     * @param  array  $params
-     * @param  array  $headers
+     * @param string $uri     Relative URI
+     * @param array  $params  Parameters to be added as QueryString
+     * @param array  $headers Custom Headers
      *
      * @return ResponseInterface
      */
@@ -30,9 +37,9 @@ interface Client
     /**
      * Perform a POST request
      *
-     * @param  string $uri
-     * @param  array  $data
-     * @param  array  $headers
+     * @param string $uri     Relative URI
+     * @param array  $data    Data to be added to the requests body
+     * @param array  $headers Custom Headers
      *
      * @return ResponseInterface
      */
@@ -41,9 +48,9 @@ interface Client
     /**
      * Perform a PATCH request
      *
-     * @param  string $uri
-     * @param  array  $data
-     * @param  array  $headers
+     * @param string $uri     Relative URI
+     * @param array  $data    Data to be added to the requests body
+     * @param array  $headers Custom Headers
      *
      * @return ResponseInterface
      */
@@ -52,9 +59,9 @@ interface Client
     /**
      * Perform a DELETE request
      *
-     * @param  string $uri
-     * @param  array  $data
-     * @param  array  $headers
+     * @param string $uri     Relative URI
+     * @param array  $data    Data to be added to the requests body
+     * @param array  $headers Custom Headers
      *
      * @return ResponseInterface
      */

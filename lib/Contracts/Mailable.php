@@ -6,7 +6,11 @@ use Xedi\SendGrid\Contracts\Clients\Client;
 use Xedi\SendGrid\Contracts\Clients\Response;
 
 /**
+ * Mailable Contract
+ *
  * @internal Mailable
+ * @package  Xedi\SendGrid\Contracts
+ * @author   Chris Smith <chris@xedi.com>
  */
 interface Mailable
 {
@@ -20,7 +24,7 @@ interface Mailable
     /**
      * Send the Mailable
      *
-     * @param  Client\Client $client Transmission Adapter
+     * @param Client\Client $client Transmission Adapter
      *
      * @return Response An implementation of the Response contract
      */
@@ -31,6 +35,8 @@ interface Mailable
      *
      * @param string      $email_address Email address of the intended recipient
      * @param string|null $name          Name of the intended recipient
+     *
+     * @return static
      */
     public function addRecipient(string $email_address, string $name = null): self;
 
@@ -45,7 +51,9 @@ interface Mailable
      * );
      * ```
      *
-     * @param array  $recipients Array of Recipients
+     * @param array $recipients Array of Recipients
+     *
+     * @return static
      */
     public function addRecipients(array $recipients): self;
 
@@ -83,6 +91,8 @@ interface Mailable
      *
      * @param string $mime_type Type of content to add
      * @param string $content   The actual content
+     *
+     * @return static
      */
     public function addContent(string $mime_type, string $content): self;
 
@@ -97,6 +107,8 @@ interface Mailable
      * Alias for adding plaintext content
      *
      * @param string $content The actual content
+     *
+     * @return static
      */
     public function addTextContent(string $content): self;
 
@@ -104,6 +116,8 @@ interface Mailable
      * Alias for adding HTML content
      *
      * @param string $content The actual content
+     *
+     * @return static
      */
     public function addHtmlContent(string $content): self;
 
@@ -134,6 +148,8 @@ interface Mailable
      *
      * @param string      $email_address Email address of the Sender
      * @param string|null $name          Name of the Sender
+     *
+     * @return static
      */
     public function setSender(string $email_address, string $name = null): self;
 
@@ -169,6 +185,8 @@ interface Mailable
      * Set the Subject for the Mailable
      *
      * @param string $subject Mailable Subject
+     *
+     * @return static
      */
     public function setSubject(string $subject): self;
 
