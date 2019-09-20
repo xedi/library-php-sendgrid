@@ -7,7 +7,9 @@ use Xedi\SendGrid\Support\Arrayable;
 
 /**
  * Entity Abstract Class
+ *
  * @package Xedi\SendGrid\Mail\Entities
+ * @author  Chris Smith <chris@xedi.com>
  */
 abstract class Entity implements JsonSerializable, Arrayable
 {
@@ -19,6 +21,8 @@ abstract class Entity implements JsonSerializable, Arrayable
     protected $properties = [];
 
     /**
+     * Create an instance of a class that extends Entity
+     *
      * @param array $attributes Entity attributes
      */
     public function __construct($attributes = [])
@@ -29,7 +33,7 @@ abstract class Entity implements JsonSerializable, Arrayable
     /**
      * Fill the Entity with data
      *
-     * @param  array  $attributes
+     * @param array $attributes Attributes to add to the class
      *
      * @return void
      */
@@ -43,7 +47,8 @@ abstract class Entity implements JsonSerializable, Arrayable
     /**
      * Magic Get
      *
-     * @param  string $attribute_name
+     * @param string $attribute_name The name of the attribute to retrieve
+     *
      * @return mixed
      */
     public function __get($attribute_name)
@@ -54,8 +59,8 @@ abstract class Entity implements JsonSerializable, Arrayable
     /**
      * Magic Set
      *
-     * @param string $attribute_name
-     * @param mixed $attribute_value
+     * @param string $attribute_name  The name of the attribute
+     * @param mixed  $attribute_value The value to set
      *
      * @return void
      */
