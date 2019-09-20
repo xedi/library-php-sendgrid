@@ -64,7 +64,7 @@ class SendGrid
      *
      * @return Mail
      */
-    public function prepareMail()
+    public static function prepareMail()
     {
         return new Mail();
     }
@@ -76,7 +76,7 @@ class SendGrid
      *
      * @return HttpResponse
      */
-    public function send(Mailable $mail_item)
+    public static function send(Mailable $mail_item)
     {
         return $mail_item->send($this->client);
     }
