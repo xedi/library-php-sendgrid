@@ -12,13 +12,17 @@ use Xedi\SendGrid\Exceptions\SendGridUnreacheable as SendGridUnreacheableExcepti
 
 /**
  * Class ApiClient
+ *
  * @package Xedi\SendGrid\Clients
+ * @author  Chris Smith <chris@xedi.com>
  */
 class ApiClient implements ClientContract
 {
     use HandlesExceptions;
 
     /**
+     * Instance of GuzzleHttp\Client
+     *
      * @var GuzzleClient $client
      */
     private $client;
@@ -26,8 +30,8 @@ class ApiClient implements ClientContract
     /**
      * ApiClient constructor.
      *
-     * @param string $api_key
-     * @param array  $options
+     * @param string $api_key SendGrid API Key
+     * @param array  $options Additional options to pass to GuzzleClient
      */
     public function __construct(string $api_key, array $options = [])
     {
@@ -48,7 +52,7 @@ class ApiClient implements ClientContract
     /**
      * Set Client
      *
-     * @param GuzzleClient $client
+     * @param GuzzleClient $client A GuzzleClient instance
      *
      * @return static
      */
@@ -60,9 +64,11 @@ class ApiClient implements ClientContract
     }
 
     /**
-     * @param string $uri
-     * @param array  $params
-     * @param array  $headers
+     * Perform a GET request
+     *
+     * @param string $uri     Relative URI
+     * @param array  $params  Parameters to form the QueryString
+     * @param array  $headers Custom headers
      *
      * @return ResponseContract
      */
@@ -72,9 +78,11 @@ class ApiClient implements ClientContract
     }
 
     /**
-     * @param string $uri
-     * @param array  $data
-     * @param array  $headers
+     * Perform a POST request
+     *
+     * @param string $uri     Relative URI
+     * @param array  $data    Data to add to the requests body
+     * @param array  $headers Custom headers
      *
      * @return ResponseContract
      */
@@ -84,9 +92,11 @@ class ApiClient implements ClientContract
     }
 
     /**
-     * @param string $uri
-     * @param array  $data
-     * @param array  $headers
+     * Perform a PATCH request
+     *
+     * @param string $uri     Relative URI
+     * @param array  $data    Data to add to the requests body
+     * @param array  $headers Custom headers
      *
      * @return ResponseContract
      */
@@ -96,9 +106,11 @@ class ApiClient implements ClientContract
     }
 
     /**
-     * @param string $uri
-     * @param array  $data
-     * @param array  $headers
+     * Perform a DELETE request
+     *
+     * @param string $uri     Relative URI
+     * @param array  $data    Data to add to the requests body
+     * @param array  $headers Custom headers
      *
      * @return ResponseContract
      */
@@ -110,12 +122,12 @@ class ApiClient implements ClientContract
     /**
      * Make the Request to SendGrid
      *
-     * @param  string $method  HTTP Verb
-     * @param  string $uri     URI of the resource to interact with
-     * @param  array  $data    Data to send
-     * @param  array  $headers HTTP Headers
+     * @param string $method  HTTP Verb
+     * @param string $uri     URI of the resource to interact with
+     * @param array  $data    Data to send
+     * @param array  $headers HTTP Headers
      *
-     * @todo Document Exception Types
+     *                        TODO: Document Exception Types
      *
      * @return ResponseContract
      */

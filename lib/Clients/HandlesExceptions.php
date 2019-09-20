@@ -14,12 +14,18 @@ use Xedi\SendGrid\Exceptions\Domain\FailedDecodingException;
 use Xedi\SendGrid\Support\Arr;
 use Xedi\SendGrid\Support\Str;
 
+/**
+ * HandleExceptions Concern
+ *
+ * @package Xedi\SendGrid\Clients
+ * @author  Chris Smith <chris@xedi.com>
+ */
 trait HandlesExceptions
 {
     /**
      * Handles converting Guzzle exceptions into localized exceptions
      *
-     * @param  GuzzleException $exception Exception thrown by Guzzle
+     * @param GuzzleException $exception Exception thrown by Guzzle
      *
      * @return ExceptionContract Instance of a local exception
      */
@@ -37,7 +43,7 @@ trait HandlesExceptions
     /**
      * Handles exclusively Client (4xx) Exceptions
      *
-     * @param  ClientException $excepion
+     * @param ClientException $excepion Original Exception
      *
      * @return ExceptionContract Am implementation of the local exception contract
      */
@@ -55,7 +61,7 @@ trait HandlesExceptions
     /**
      * Handles exclusively 400 BAD REQUEST exceptions
      *
-     * @param  ClientException $exception
+     * @param ClientException $exception Original Exception
      *
      * @return ExceptionContract Am implementation of the local exception contract
      */
@@ -101,8 +107,8 @@ trait HandlesExceptions
     /**
      * Handles errors from SendGrid extracted from the ClientExceptions
      *
-     * @param  array           $error     Error Object
-     * @param  GuzzleException $exception Original Exception
+     * @param array           $error     Error Object
+     * @param GuzzleException $exception Original Exception
      *
      * @return ExceptionContract Am implementation of the local exception contract
      */
@@ -129,7 +135,7 @@ trait HandlesExceptions
     /**
      * Handles Unrecognised Guzzle Exceptions
      *
-     * @param  GuzzleException $exception
+     * @param GuzzleException $exception Original Exception
      *
      * @return UnknownException
      */
