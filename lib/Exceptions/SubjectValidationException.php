@@ -6,7 +6,9 @@ use Xedi\SendGrid\Exceptons\ValidationException;
 
 /**
  * SubjectValidation Exception
+ *
  * @package Xedi\SendGrid\Exceptions\SubjectValidationException
+ * @author  Chris Smith <chris@xedi.com>
  */
 class SubjectValidationException extends ValidationException
 {

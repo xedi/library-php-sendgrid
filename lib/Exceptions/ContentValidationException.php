@@ -4,7 +4,9 @@ namespace Xedi\SendGrid\Exceptions;
 
 /**
  * ContentValidation Exception
+ *
  * @package Xedi\SendGrid\Exceptions\ContentValidationException
+ * @author  Chris Smith <chris@xedi.com>
  */
 class ContentValidationException extends ValidationException
 {

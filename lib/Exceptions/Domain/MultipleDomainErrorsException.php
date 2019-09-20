@@ -8,17 +8,22 @@ use Xedi\SendGrid\Contracts\Exception as ExceptionContract;
 
 /**
  * Exception representing Multiple exceptions
+ *
  * @package Xedi\SendGrid\Exceptions\Domain
+ * @author  Chris Smith <chris@xedi.com>
  */
 class MultipleDomainErrorsException extends DomainException implements ExceptionContract
 {
     /**
      * List of Exceptions
+     *
      * @var array
      */
     protected $exceptions = [];
 
     /**
+     * Create a new MultipleDomainErrorsException
+     *
      * @param array                $exceptions Array of Exception objects
      * @param int|integer          $code       Status Code to report
      * @param GuzzleException|null $previous   Original Exception

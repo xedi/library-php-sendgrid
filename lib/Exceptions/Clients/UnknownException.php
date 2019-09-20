@@ -9,11 +9,14 @@ use Xedi\SendGrid\Contracts\Exception as ExceptionContract;
  * An wild UnknownException appeared! You are suprised.
  *
  * @package Xedi\SendGrid\Exceptions
+ * @author  Chris Smith <chris@xedi.com>
  */
 class UnknownException extends RuntimeException implements ExceptionContract
 {
     /**
-     * @param GuzzleException $exception
+     * Create a new UnknownException
+     *
+     * @param GuzzleException $exception Original Exception
      */
     public function __construct(GuzzleException $exception)
     {

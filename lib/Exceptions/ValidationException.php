@@ -8,7 +8,9 @@ use Xedi\SendGrid\Contracts\Mailable;
 
 /**
  * Abstract ValidationException
+ *
  * @package Xedi\SendGrid\Exceptions\ValidationException
+ * @author  Chris Smith <chris@xedi.com>
  */
 abstract class ValidationException extends UnexpectedValueException implements Exception
 {
@@ -27,6 +29,8 @@ abstract class ValidationException extends UnexpectedValueException implements E
     protected $mailable;
 
     /**
+     * Create new extension of the ValidationException
+     *
      * @param string   $message  Explanation of the exception
      * @param Mailable $mailable Mailable that is associated with the exception
      */

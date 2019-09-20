@@ -10,10 +10,13 @@ use Xedi\SendGrid\Contracts\Exception as ExceptionContract;
  * A wild ClientException appeared! You are startled.
  *
  * @package Xedi\SendGrid\Exceptions\Clients
+ * @author  Chris Smith <chris@xedi.com>
  */
 class UndecodedClientException extends UnexpectedValueException implements ExceptionContract
 {
     /**
+     * Create a new UndecodedClientException
+     *
      * @param ClientException $exception [description]
      */
     public function __construct(ClientException $exception)

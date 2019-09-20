@@ -8,6 +8,7 @@ use Xedi\SendGrid\Exceptions\ValidationException;
  * RecipientValidation Exception
  *
  * @package Xedi\SendGrid\Exceptions\RecipientValidationException
+ * @author  Chris Smith <chris@xedi.com>
  */
 class RecipientValidationException extends ValidationException
 {
