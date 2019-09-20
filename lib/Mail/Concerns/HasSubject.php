@@ -4,6 +4,12 @@ namespace Xedi\SendGrid\Mail\Concerns;
 
 use Xedi\SendGrid\Exceptions\SubjectValidationException;
 
+/**
+ * HasSubject Concern
+ *
+ * @package Xedi\SendGrid\Mail\Concerns
+ * @author  Chris Smith <chris@xedi.com>
+ */
 trait HasSubject
 {
     protected $subject;
@@ -12,6 +18,8 @@ trait HasSubject
      * Set the Subject for the Mailable
      *
      * @param string $subject Mailable Subject
+     *
+     * @return static
      */
     public function setSubject(string $subject): self
     {

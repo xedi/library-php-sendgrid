@@ -5,6 +5,12 @@ namespace Xedi\SendGrid\Mail\Concerns;
 use Xedi\SenderGrid\Exceptions\SenderValidationException;
 use Xedi\SendGrid\Mail\Entities\Sender;
 
+/**
+ * HasSender Concern
+ *
+ * @package Xedi\SendGrid\Mail\Concerns
+ * @author  Chris Smith <chris@xedi.com>
+ */
 trait HasSender
 {
     protected $from;
@@ -14,6 +20,8 @@ trait HasSender
      *
      * @param string      $email_address Email address of the Sender
      * @param string|null $name          Name of the Sender
+     *
+     * @return static
      */
     public function setSender(string $email_address, string $name = null): self
     {

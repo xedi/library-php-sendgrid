@@ -5,6 +5,12 @@ namespace Xedi\SendGrid\Mail\Concerns;
 use Xedi\SendGrid\Exceptions\RecipientValidationException;
 use Xedi\SendGrid\Mail\Entities\Recipient;
 
+/**
+ * HasRecipients Concern
+ *
+ * @package Xedi\SendGrid\Mail\Concerns
+ * @author  Chris Smith <chris@xedi.com>
+ */
 trait HasRecipients
 {
     protected $recipients = [];
@@ -14,6 +20,8 @@ trait HasRecipients
      *
      * @param string      $email_address Email address of the intended recipient
      * @param string|null $name          Name of the intended recipient
+     *
+     * @return static
      */
     public function addRecipient(string $email_address, string $name = null): self
     {
@@ -33,7 +41,9 @@ trait HasRecipients
      * );
      * ```
      *
-     * @param array  $recipients Array of Recipients
+     * @param array $recipients Array of Recipients
+     *
+     * @return static
      */
     public function addRecipients(array $recipients): self
     {

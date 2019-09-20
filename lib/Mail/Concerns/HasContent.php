@@ -5,6 +5,12 @@ namespace Xedi\SendGrid\Mail\Concerns;
 use Xedi\SendGrid\Exceptions\ContentValidationException;
 use Xedi\SendGrid\Mail\Entities\Content;
 
+/**
+ * HasContent Concern
+ *
+ * @package Xedi\SendGrid\Mail\Concerns
+ * @author  Chris Smith <chris@xedi.com>
+ */
 trait HasContent
 {
     protected $content = [];
@@ -14,6 +20,8 @@ trait HasContent
      *
      * @param string $mime_type Type of content to add
      * @param string $content   The actual content
+     *
+     * @return static
      */
     public function addContent(string $mime_type, string $content): self
     {
@@ -36,6 +44,8 @@ trait HasContent
      * Alias for adding plaintext content
      *
      * @param string $content The actual content
+     *
+     * @return static
      */
     public function addTextContent(string $content): self
     {
@@ -48,6 +58,8 @@ trait HasContent
      * Alias for adding HTML content
      *
      * @param string $content The actual content
+     *
+     * @return static
      */
     public function addHtmlContent(string $content): self
     {
