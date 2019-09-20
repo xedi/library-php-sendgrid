@@ -4,14 +4,17 @@ namespace Xedi\SendGrid\Support;
 
 /**
  * String Utilities
+ *
  * @package Xedi\SendGrid\Support;
+ * @author  Chris Smith <chris@xedi.com>
  */
 class Str
 {
     /**
      * Convert the given string to title case.
      *
-     * @param  string  $value
+     * @param string $value Value to be converted
+     *
      * @return string
      */
     public static function title($value)
@@ -22,8 +25,8 @@ class Str
     /**
      * Determine if a given string contains a given substring.
      *
-     * @param  string  $haystack
-     * @param  string|array  $needles
+     * @param string       $haystack String to use
+     * @param string|array $needles  Needle(s) to check for
      *
      * @return bool
      */
