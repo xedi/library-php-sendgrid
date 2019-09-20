@@ -8,6 +8,7 @@ use Xedi\SendGrid\Clients\HandlesExceptions;
 use Xedi\SendGrid\Clients\HttpResponse;
 use Xedi\SendGrid\Contracts\Clients\Client as ClientContract;
 use Xedi\SendGrid\Contracts\Clients\Response as ResponseContract;
+use Xedi\SendGrid\Exceptions\BadDeveloperException;
 use Xedi\SendGrid\Exceptions\SendGridUnreacheable as SendGridUnreacheableException;
 
 /**
@@ -127,7 +128,8 @@ class ApiClient implements ClientContract
      * @param array  $data    Data to send
      * @param array  $headers HTTP Headers
      *
-     *                        TODO: Document Exception Types
+     * @throws Xedi\Exceptions\SendGridUnreachableException
+     * @throws Xedi\Exceptions\DeveloperException
      *
      * @return ResponseContract
      */
@@ -157,7 +159,7 @@ class ApiClient implements ClientContract
         } catch (GuzzleException $exception) {
             throw $this->handleException($exception);
         } catch (Throwable $exception) {
-            // TODO: Developer Exception
+            throw BadDeveloperException::uncaughtException($exception);
         }
     }
 }
