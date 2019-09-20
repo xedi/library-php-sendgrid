@@ -12,7 +12,9 @@ use Xedi\SendGrid\Mail\Concerns\HasSubject;
 
 /**
  * Class Mail
+ *
  * @package Xedi\SendGrid\Mail
+ * @author  Chris Smith <chris@xedi.com>
  */
 class Mail implements Mailable
 {
@@ -37,7 +39,7 @@ class Mail implements Mailable
     /**
      * Send the Mailable
      *
-     * @param  Client\Client $client Transmission Adapter
+     * @param Client\Client $client Transmission Adapter
      *
      * @return Response An implementation of the Response contract
      */
