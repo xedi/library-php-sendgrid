@@ -6,6 +6,12 @@ use ArrayAccess;
 use ArrayObject;
 use Xedi\SendGrid\Support\Arr;
 
+/**
+ * Optional Class
+ *
+ * @package Xedi\SendGrid\Support
+ * @author  Chris Smith <chris@xedi.com>
+ */
 class Optional implements ArrayAccess
 {
     /**
@@ -18,7 +24,8 @@ class Optional implements ArrayAccess
     /**
      * Create a new optional instance.
      *
-     * @param  mixed  $value
+     * @param mixed $value Value that is optional
+     *
      * @return void
      */
     public function __construct($value)
@@ -29,7 +36,7 @@ class Optional implements ArrayAccess
     /**
      * Dynamically access a property on the underlying object.
      *
-     * @param  string  $key
+     * @param string $key Property that may exist on the underlying object
      *
      * @return mixed
      */
@@ -43,7 +50,7 @@ class Optional implements ArrayAccess
     /**
      * Dynamically check a property exists on the underlying object.
      *
-     * @param  mixed  $name
+     * @param mixed $name Property to perform existance check for
      *
      * @return bool
      */
@@ -63,7 +70,7 @@ class Optional implements ArrayAccess
     /**
      * Determine if an item exists at an offset.
      *
-     * @param  mixed  $key
+     * @param mixed $key Key to perform existance check for
      *
      * @return bool
      */
@@ -75,7 +82,7 @@ class Optional implements ArrayAccess
     /**
      * Get an item at a given offset.
      *
-     * @param  mixed  $key
+     * @param mixed $key Key that may exist on the underlying object
      *
      * @return mixed
      */
@@ -87,8 +94,8 @@ class Optional implements ArrayAccess
     /**
      * Set the item at a given offset.
      *
-     * @param  mixed  $key
-     * @param  mixed  $value
+     * @param mixed $key   Key to set the value against
+     * @param mixed $value Value to be set on the underlying object
      *
      * @return void
      */
@@ -102,7 +109,7 @@ class Optional implements ArrayAccess
     /**
      * Unset the item at a given offset.
      *
-     * @param  string  $key
+     * @param string $key Key to be unset from the underlying object
      *
      * @return void
      */
@@ -116,8 +123,9 @@ class Optional implements ArrayAccess
     /**
      * Dynamically pass a method to the underlying object.
      *
-     * @param  string  $method
-     * @param  array  $parameters
+     * @param string $method     Name of the method
+     * @param array  $parameters Parameters provided
+     *
      * @return mixed
      */
     public function __call($method, $parameters)
