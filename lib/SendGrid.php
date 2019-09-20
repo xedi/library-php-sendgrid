@@ -28,6 +28,8 @@ class SendGrid
      * Set the Transport Client for the library
      *
      * @param ClientContract $client A Client
+     *
+     * @return void
      */
     public static function setClient(ClientContract $client)
     {
@@ -35,8 +37,10 @@ class SendGrid
     }
 
     /**
-     * @param string $api_key
-     * @param array  $options
+     * Get an instance of the API Client
+     *
+     * @param string $api_key SendGrid API Key
+     * @param array  $options Additional Options to pass to GuzzleHttp\Client
      *
      * @return ApiClient
      */
@@ -46,6 +50,8 @@ class SendGrid
     }
 
     /**
+     * Get an instance of the Mock Client
+     *
      * @return MockClient
      */
     public static function getMockClient()
@@ -54,6 +60,8 @@ class SendGrid
     }
 
     /**
+     * Get an instance of the Mail class
+     *
      * @return Mail
      */
     public function prepareMail()
@@ -62,7 +70,11 @@ class SendGrid
     }
 
     /**
-     * @param Mailable $mail_item
+     * Send a Mailable item to SendGrid
+     *
+     * @param Mailable $mail_item A Mail class instance implementing the Mailable contract
+     *
+     * @return HttpResponse
      */
     public function send(Mailable $mail_item)
     {
