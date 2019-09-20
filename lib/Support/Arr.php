@@ -4,12 +4,18 @@ namespace Xedi\SendGrid\Support;
 
 use ArrayAccess;
 
+/**
+ * Array utilities and helpers
+ *
+ * @package Xedi\SendGrid\Support
+ * @author  Chris Smith <chris@xedi.com>
+ */
 class Arr
 {
     /**
      * Determine whether the given value is array accessible.
      *
-     * @param  mixed  $value
+     * @param mixed $value Value to be assessed
      *
      * @return bool
      */
@@ -21,8 +27,8 @@ class Arr
     /**
      * Determine if the given key exists in the provided array.
      *
-     * @param  \ArrayAccess|array  $array
-     * @param  string|int  $key
+     * @param \ArrayAccess|array $array Provided array or Object implementing ArrayAccess
+     * @param string|int         $key   Provided key
      *
      * @return bool
      */
@@ -38,9 +44,9 @@ class Arr
     /**
      * Get an item from an array using "dot" notation.
      *
-     * @param  \ArrayAccess|array  $array
-     * @param  string  $key
-     * @param  mixed   $default
+     * @param \ArrayAccess|array $array   Provided array or class implementing ArrayAccess
+     * @param string             $key     Key of the desired object
+     * @param mixed              $default Value to returned if no item is found
      *
      * @return mixed
      */
