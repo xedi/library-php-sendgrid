@@ -1,7 +1,7 @@
 # Composer
 
-.PHONY: composer-install composer-update composer-install-dev composer-dump-auto
-.SILENT: composer-install composer-update composer-install-dev composer-dump-auto
+.PHONY: composer-install composer-update composer-install-dev composer-dump-auto composer-require composer-require-dev composer-remove
+.SILENT: composer-install composer-update composer-install-dev composer-dump-auto composer-require composer-require-dev composer-remove
 
 composer-install:
 	docker run --rm \
@@ -30,6 +30,24 @@ composer-dump-auto:
 	--user $(id -u):$(id -g) \
 	xediltd/composer dump-autoload
 	rm -f auth.json
+
+composer-require:
+	docker run --rm \
+	--volume $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))):/app \
+	--user $(id -u):$(id -g) \
+	xediltd/composer require $(package) --ignore-platform-reqs --no-scripts
+
+composer-require-dev:
+	docker run --rm \
+	--volume $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))):/app \
+	--user $(id -u):$(id -g) \
+	xediltd/composer require $(package) --ignore-platform-reqs --no-scripts --dev
+
+composer-remove:
+	docker run --rm \
+	--volume $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))):/app \
+	--user $(id -u):$(id -g) \
+	xediltd/composer remove $(package) --ignore-platform-reqs --no-scripts --dev
 
 # Static Analysis
 
