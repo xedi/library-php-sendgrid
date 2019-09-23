@@ -4,7 +4,7 @@ namespace Xedi\SendGrid\Clients;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
-use Xedi\SendGrid\Clients\HandlesExceptions;
+use Xedi\SendGrid\Clients\Concerns\HandlesExceptions;
 use Xedi\SendGrid\Clients\HttpResponse;
 use Xedi\SendGrid\Contracts\Clients\Client as ClientContract;
 use Xedi\SendGrid\Contracts\Clients\Response as ResponseContract;

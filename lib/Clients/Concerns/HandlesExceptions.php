@@ -1,6 +1,6 @@
 <?php
 
-namespace Xedi\SendGrid\Clients;
+namespace Xedi\SendGrid\Clients\Concerns;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
