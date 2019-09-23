@@ -2,7 +2,7 @@
 
 namespace Xedi\SendGrid\Exceptions\Domain;
 
-use GuzzleHttp\Exceptions\ClientException;
+use GuzzleHttp\Exception\ClientException;
 use UnexpectedValueException;
 use Xedi\SendGrid\Contracts\Exception as ExceptionContract;
 

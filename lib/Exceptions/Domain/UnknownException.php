@@ -2,7 +2,7 @@
 
 namespace Xedi\SendGrid\Exceptions\Domain;
 
-use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\ClientException;
 use RuntimeException;
 use Xedi\SendGrid\Contracts\Exception as ExceptionContract;
 
@@ -19,7 +19,7 @@ class UnknownException extends RuntimeException implements ExceptionContract
      *
      * @param GuzzleException $previous Original Exception
      */
-    public function __construct(GuzzleException $previous)
+    public function __construct(ClientException $previous)
     {
         parent::__construct(
             "Unknown exception encountered: [{$previous->getCode()}] {get_class($previous)}",

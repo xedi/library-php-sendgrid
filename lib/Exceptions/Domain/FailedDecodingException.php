@@ -2,7 +2,7 @@
 
 namespace Xedi\SendGrid\Exceptions\Domain;
 
-use GuzzleHttp\Exceptions\GuzzleException;
+use GuzzleHttp\Exception\GuzzleException;
 use UnexpectedValueException;
 use Xedi\SendGrid\Contracts\Exception as ExceptionContract;
 
@@ -24,7 +24,7 @@ class FailedDecodingException extends UnexpectedValueException implements Except
     public function __construct(string $json_error_msg, int $code, GuzzleException $previous)
     {
         parent::__construct(
-            "A json_decode exception [{$json_error_msg}] occurred whilst " +
+            "A json_decode exception [{$json_error_msg}] occurred whilst " .
             "trying to decode the errors in the attached exception",
             $code,
             $previous

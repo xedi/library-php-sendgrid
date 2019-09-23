@@ -2,6 +2,7 @@
 
 namespace Xedi\SendGrid\Exceptions\Clients;
 
+use GuzzleHttp\Exception\GuzzleException;
 use RuntimeException;
 use Xedi\SendGrid\Contracts\Exception as ExceptionContract;
 

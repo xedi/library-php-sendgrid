@@ -4,15 +4,15 @@ namespace Xedi\SendGrid\Clients\Concerns;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionException;
 use Xedi\SendGrid\Contracts\Exception as ExceptonContract;
 use Xedi\SendGrid\Exceptions\Clients\UndecodedClientException;
 use Xedi\SendGrid\Exceptions\Clients\UnknownException;
-use Xedi\SendGrid\Exceptions\Domain\MultipleDomainErrorsException;
 use Xedi\SendGrid\Exceptions\Domain\FailedDecodingException;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
+use Xedi\SendGrid\Exceptions\Domain\MultipleDomainErrorsException;
 
 /**
  * HandleExceptions Concern
@@ -73,7 +73,7 @@ trait HandlesExceptions
             return new UndecodedClientException($exception);
         }
 
-        $body = json_decode((string) $exception->getResponse());
+        $body = json_decode((string) $response->getResponse());
         if ($body === null && json_last_error()) {
             return new FailedDecodingException(
                 json_last_error_msg(),
@@ -82,21 +82,22 @@ trait HandlesExceptions
             );
         }
 
-        $errors = Arr::get('errors', $body, []);
+        $errors = $body->errors ?: [];
+
         switch (count($errors)) {
             case 0:
                 return $this->handleUnknownException($exception);
                 break;
             case 1:
-                return $this->handleSendGridError($body, $exception);
+                return $this->handleSendGridError($errors[0], $exception);
                 break;
             default:
                 return new MultipleDomainErrorsException(
                     array_map(
-                        $errors,
                         function ($error) use ($exception) {
                             return $this->handleSendGridError($error, $exception);
-                        }
+                        },
+                        $errors
                     ),
                     500,
                     $exception
@@ -107,17 +108,17 @@ trait HandlesExceptions
     /**
      * Handles errors from SendGrid extracted from the ClientExceptions
      *
-     * @param array           $error     Error Object
+     * @param object          $error     Error Object
      * @param GuzzleException $exception Original Exception
      *
      * @return ExceptionContract Am implementation of the local exception contract
      */
-    private function handleSendGridError(array $error, GuzzleException $exception)
+    private function handleSendGridError(object $error, GuzzleException $exception)
     {
         if (Str::contains($error->field, '.')) {
             $parts = [];
             preg_match_all('/([[:alpha:]]+)/', $error->field, $parts);
-            $parts = array_map($parts, Str::title);
+            $parts = array_map(Str::class . '::title', $parts[0]);
             $short_name = join("\\", $parts) . "Exception";
         } else {
             $short_name = Str::title($error->field) . 'Exception';
