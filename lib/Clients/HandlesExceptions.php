@@ -11,8 +11,8 @@ use Xedi\SendGrid\Exceptions\Clients\UndecodedClientException;
 use Xedi\SendGrid\Exceptions\Clients\UnknownException;
 use Xedi\SendGrid\Exceptions\Domain\MultipleDomainErrorsException;
 use Xedi\SendGrid\Exceptions\Domain\FailedDecodingException;
-use Xedi\SendGrid\Support\Arr;
-use Xedi\SendGrid\Support\Str;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 /**
  * HandleExceptions Concern

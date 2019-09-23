@@ -3,7 +3,7 @@
 namespace Xedi\SendGrid\Mail\Entities;
 
 use JsonSerializable;
-use Xedi\SendGrid\Support\Arrayable;
+use Illuminate\Contracts\Support\Arrayable;
 
 /**
  * Entity Abstract Class

@@ -43,22 +43,3 @@ if (! function_exists('reject')) {
         );
     }
 }
-
-if (! function_exists('optional')) {
-    /**
-     * Provide access to optional objects.
-     *
-     * @param mixed         $value    Value that is optional
-     * @param callable|null $callable Optional callable to be invoked if the value is null
-     *
-     * @return mixed
-     */
-    function optional($value = null, callable $callable = null)
-    {
-        if (is_null($callable)) {
-            return new Optional($value);
-        } elseif (! is_null($value)) {
-            return $callable($value);
-        }
-    }
-}
