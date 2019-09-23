@@ -1,7 +1,6 @@
 {
     "name": "xedi/sendgrid",
     "description": "SendGrid PHP Library",
-    "version": "5.8.32",
     "type": "library",
     "require": {
         "php": "^7.1.3",
@@ -37,8 +36,5 @@
         "files": [
             "lib/Support/helpers.php"
         ]
-    },
-    "suggest": {
-        "Midders": "Wipes his shitty arse"
     }
 }
