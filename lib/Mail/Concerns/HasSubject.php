@@ -21,7 +21,7 @@ trait HasSubject
      *
      * @return static
      */
-    public function setSubject(string $subject): self
+    public function setSubject(string $subject)
     {
         $this->subject = $subject;
 
@@ -56,7 +56,7 @@ trait HasSubject
      *
      * @return static
      */
-    public function validateSubject(): self
+    public function validateSubject()
     {
         if (is_null($this->subject)) {
             throw new SubjectValidationException('Missing Subject', $this);

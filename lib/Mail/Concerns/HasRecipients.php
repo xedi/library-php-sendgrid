@@ -23,7 +23,7 @@ trait HasRecipients
      *
      * @return static
      */
-    public function addRecipient(string $email_address, string $name = null): self
+    public function addRecipient(string $email_address, string $name = null)
     {
         $this->recipients[] = new Recipient($email_address, $name);
 
@@ -45,7 +45,7 @@ trait HasRecipients
      *
      * @return static
      */
-    public function addRecipients(array $recipients): self
+    public function addRecipients(array $recipients)
     {
         foreach ($recipients as $recipient) {
             $this->addRecipient(...$recipient);
@@ -83,9 +83,9 @@ trait HasRecipients
      * @throws Xedi\SendGrid\Exceptions\RecipientValidationException
      * @return static
      */
-    public function validateRecipients(): self
+    public function validateRecipients()
     {
-        if (empty($this->recipients) {
+        if (empty($this->recipients)) {
             throw new RecipientValidationException('Missing Recipients', $this);
         }
 
@@ -112,7 +112,7 @@ trait HasRecipients
                 'to' => array_map(
                     $this->recipients,
                     function ($recipient) {
-                        return $recipient->toArray()
+                        return $recipient->toArray();
                     }
                 )
             ]

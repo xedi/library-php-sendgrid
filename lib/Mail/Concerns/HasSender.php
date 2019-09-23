@@ -23,7 +23,7 @@ trait HasSender
      *
      * @return static
      */
-    public function setSender(string $email_address, string $name = null): self
+    public function setSender(string $email_address, string $name = null)
     {
         $this->from = new Sender($email_address, $name);
 
@@ -56,7 +56,7 @@ trait HasSender
      *
      * @return static
      */
-    public function validateSender(): self
+    public function validateSender()
     {
         if (is_null($this->from)) {
             throw new SenderValidationException('Missing Sender', $this);

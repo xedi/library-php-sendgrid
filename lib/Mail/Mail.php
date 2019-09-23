@@ -28,7 +28,7 @@ class Mail implements Mailable
      *
      * @return static
      */
-    final public function validate(): self
+    public function validate()
     {
         return $this->validateContent()
             ->validateRecipients()
@@ -43,7 +43,7 @@ class Mail implements Mailable
      *
      * @return Response An implementation of the Response contract
      */
-    final public function send(Client\Client $client): Response
+    public function send(Client $client): Response
     {
         $this->validate();
 

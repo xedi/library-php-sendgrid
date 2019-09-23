@@ -49,7 +49,7 @@ trait HandlesExceptions
      */
     private function handleClientException(ClientException $excepion)
     {
-        switch () {
+        switch ($exception->getCode()) {
             case 400:
                 return $this->handleBadRequestException($exception);
                 break;
@@ -125,7 +125,7 @@ trait HandlesExceptions
         $class_name = "Xedi\\SendGrid\\Exceptions\\Domain\\{$short_name}";
 
         try {
-            return new ReflectionClass($class_name)
+            return (new ReflectionClass($class_name))
                 ->newInstance($error, $exception);
         } catch (ReflectionException $not_found_exception) {
             return $this->handleUnknownException($exception);

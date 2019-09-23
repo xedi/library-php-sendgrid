@@ -2,8 +2,8 @@
 
 namespace Xedi\SendGrid\Contracts\Clients;
 
-use GuzzleHttp\Client;
-use Psr\Http\Message\ResponseInterface;
+use GuzzleHttp\Client as GuzzleClient;
+use Xedi\SendGrid\Contracts\Clients\Response;
 
 /**
  * Client Contract
@@ -21,7 +21,7 @@ interface Client
      *
      * @return static
      */
-    public function setClient(GuzzleClient $client): self;
+    public function setClient(GuzzleClient $client);
 
     /**
      * Perform a GET request
@@ -30,9 +30,9 @@ interface Client
      * @param array  $params  Parameters to be added as QueryString
      * @param array  $headers Custom Headers
      *
-     * @return ResponseInterface
+     * @return Response
      */
-    public function get(string $uri, array $params = [], array $headers = []): ResponseInterface;
+    public function get(string $uri, array $params = [], array $headers = []): Response;
 
     /**
      * Perform a POST request
@@ -41,9 +41,9 @@ interface Client
      * @param array  $data    Data to be added to the requests body
      * @param array  $headers Custom Headers
      *
-     * @return ResponseInterface
+     * @return Response
      */
-    public function post(string $uri, array $data = [], array $headers = []): ResponseInterface;
+    public function post(string $uri, array $data = [], array $headers = []): Response;
 
     /**
      * Perform a PATCH request
@@ -52,9 +52,9 @@ interface Client
      * @param array  $data    Data to be added to the requests body
      * @param array  $headers Custom Headers
      *
-     * @return ResponseInterface
+     * @return Response
      */
-    public function patch(string $uri, array $data = [], array $headers = []): ResponseInterface;
+    public function patch(string $uri, array $data = [], array $headers = []): Response;
 
     /**
      * Perform a DELETE request
@@ -63,7 +63,7 @@ interface Client
      * @param array  $data    Data to be added to the requests body
      * @param array  $headers Custom Headers
      *
-     * @return ResponseInterface
+     * @return Response
      */
-    public function delete(string $uri, array $data = [], array $headers = []): ResponseInterface;
+    public function delete(string $uri, array $data = [], array $headers = []): Response;
 }

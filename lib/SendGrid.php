@@ -3,7 +3,6 @@
 namespace Xedi\SendGrid;
 
 use Xedi\SendGrid\Clients\ApiClient;
-use Xedi\SendGrid\Clients\MockClient;
 use Xedi\SendGrid\Contracts\Clients\Client as ClientContract;
 use Xedi\SendGrid\Contracts\Mailable;
 use Xedi\SendGrid\Mail\Mail;
@@ -50,16 +49,6 @@ class SendGrid
     }
 
     /**
-     * Get an instance of the Mock Client
-     *
-     * @return MockClient
-     */
-    public static function getMockClient()
-    {
-        return new MockClient();
-    }
-
-    /**
      * Get an instance of the Mail class
      *
      * @return Mail
@@ -78,6 +67,6 @@ class SendGrid
      */
     public static function send(Mailable $mail_item)
     {
-        return $mail_item->send($this->client);
+        return $mail_item->send(static::$client);
     }
 }

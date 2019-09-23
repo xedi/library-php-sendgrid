@@ -23,7 +23,7 @@ trait HasContent
      *
      * @return static
      */
-    public function addContent(string $mime_type, string $content): self
+    public function addContent(string $mime_type, string $content)
     {
         $this->content[] = new Content($mime_type, $content);
 
@@ -47,7 +47,7 @@ trait HasContent
      *
      * @return static
      */
-    public function addTextContent(string $content): self
+    public function addTextContent(string $content)
     {
         $this->content[] = new Content('text/plain', $content);
 
@@ -61,7 +61,7 @@ trait HasContent
      *
      * @return static
      */
-    public function addHtmlContent(string $content): self
+    public function addHtmlContent(string $content)
     {
         $this->content[] = new Content('text/html', $content);
 
@@ -87,7 +87,7 @@ trait HasContent
      * @throws Xedi\SendGrid\Exceptions\ContentValidationException
      * @return static
      */
-    public function validateContent(): self
+    public function validateContent()
     {
         if (! $this->hasContent()) {
             throw new ContentValidationException('Missing Content Value', $this);
@@ -107,7 +107,7 @@ trait HasContent
             'content' => array_map(
                 $this->content,
                 function ($content) {
-                    return $content->toArray()
+                    return $content->toArray();
                 }
             )
         ];

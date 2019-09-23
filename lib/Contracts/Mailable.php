@@ -4,6 +4,7 @@ namespace Xedi\SendGrid\Contracts;
 
 use Xedi\SendGrid\Contracts\Clients\Client;
 use Xedi\SendGrid\Contracts\Clients\Response;
+use Xedi\SendGrid\Mail\Entities\Sender;
 
 /**
  * Mailable Contract
@@ -19,7 +20,7 @@ interface Mailable
      *
      * @return static
      */
-    final public function validate(): self;
+    public function validate();
 
     /**
      * Send the Mailable
@@ -28,7 +29,7 @@ interface Mailable
      *
      * @return Response An implementation of the Response contract
      */
-    final public function send(Client $client): Response;
+    public function send(Client $client): Response;
 
     /**
      * Add a Recipient
@@ -38,7 +39,7 @@ interface Mailable
      *
      * @return static
      */
-    public function addRecipient(string $email_address, string $name = null): self;
+    public function addRecipient(string $email_address, string $name = null);
 
     /**
      * Add multiple Recipients at once
@@ -55,7 +56,7 @@ interface Mailable
      *
      * @return static
      */
-    public function addRecipients(array $recipients): self;
+    public function addRecipients(array $recipients);
 
     /**
      * Get the Recipients Property
@@ -77,7 +78,7 @@ interface Mailable
      * @throws Xedi\SendGrid\Exceptions\RecipientValidationException
      * @return static
      */
-    public function validateRecipients(): self;
+    public function validateRecipients();
 
     /**
      * Build the Recipients data for the API request
@@ -94,7 +95,7 @@ interface Mailable
      *
      * @return static
      */
-    public function addContent(string $mime_type, string $content): self;
+    public function addContent(string $mime_type, string $content);
 
     /**
      * Get the Content of the Mailable
@@ -110,7 +111,7 @@ interface Mailable
      *
      * @return static
      */
-    public function addTextContent(string $content): self;
+    public function addTextContent(string $content);
 
     /**
      * Alias for adding HTML content
@@ -119,7 +120,7 @@ interface Mailable
      *
      * @return static
      */
-    public function addHtmlContent(string $content): self;
+    public function addHtmlContent(string $content);
 
     /**
      * Check whether any content has been provided
@@ -134,7 +135,7 @@ interface Mailable
      * @throws Xedi\SendGrid\Exceptions\ContentValidationException
      * @return static
      */
-    public function validateContent(): self;
+    public function validateContent();
 
     /**
      * Build Content
@@ -151,7 +152,7 @@ interface Mailable
      *
      * @return static
      */
-    public function setSender(string $email_address, string $name = null): self;
+    public function setSender(string $email_address, string $name = null);
 
     /**
      * Get the Mailable's Sender
@@ -172,7 +173,7 @@ interface Mailable
      *
      * @return static
      */
-    public function validateSender(): self;
+    public function validateSender();
 
     /**
      * Build the Sender data for the API Request
@@ -188,7 +189,7 @@ interface Mailable
      *
      * @return static
      */
-    public function setSubject(string $subject): self;
+    public function setSubject(string $subject);
 
     /**
      * Get the Subject for the Mailable
@@ -211,7 +212,7 @@ interface Mailable
      *
      * @return static
      */
-    public function validateSubject(): self;
+    public function validateSubject();
 
     /**
      * Build the Subject data for the API Request
