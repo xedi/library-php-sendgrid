@@ -43,7 +43,7 @@ trait HandlesExceptions
     /**
      * Handles exclusively Client (4xx) Exceptions
      *
-     * @param ClientException $excepion Original Exception
+     * @param ClientException $exception Original Exception
      *
      * @return ExceptionContract Am implementation of the local exception contract
      */
