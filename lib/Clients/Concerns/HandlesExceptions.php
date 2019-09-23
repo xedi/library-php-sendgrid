@@ -8,7 +8,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionException;
-use Xedi\SendGrid\Contracts\Exception as ExceptonContract;
+use Xedi\SendGrid\Contracts\Exception as ExceptionContract;
 use Xedi\SendGrid\Exceptions\Clients\UndecodedClientException;
 use Xedi\SendGrid\Exceptions\Clients\UnknownException;
 use Xedi\SendGrid\Exceptions\Domain\FailedDecodingException;
@@ -47,7 +47,7 @@ trait HandlesExceptions
      *
      * @return ExceptionContract Am implementation of the local exception contract
      */
-    private function handleClientException(ClientException $excepion)
+    private function handleClientException(ClientException $exception)
     {
         switch ($exception->getCode()) {
             case 400:
