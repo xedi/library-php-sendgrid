@@ -13,6 +13,9 @@
         "mockery/mockery": "^1.2",
         "fzaninotto/faker": "^1.8"
     },
+    "conflicts": {
+        "illuminate/support": "^6.0.0"
+    },
     "license": "MIT",
     "authors": [
         {
