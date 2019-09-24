@@ -15,6 +15,7 @@ use Xedi\SendGrid\Exceptions\Domain\MultipleDomainErrorsException;
 use Xedi\SendGrid\Exceptions\Domain\Personalization\ToException;
 use Xedi\SendGrid\Exceptions\Domain\PersonalizationException;
 use Xedi\SendGrid\Exceptions\Domain\SubjectException;
+use Xedi\SendGrid\Exceptions\Domain\UnknownException as UnknownDomainException;
 
 class HandleBadRequestExceptionTest extends TestCase
 {
@@ -26,8 +27,8 @@ class HandleBadRequestExceptionTest extends TestCase
         ($mock_response = Mockery::mock(ResponseInterface::class))
             ->shouldReceive('getHeader')
             ->once()
-            ->with('Accepts')
-            ->andReturn('text/plain');
+            ->with('Accept')
+            ->andReturn(['text/plain']);
 
         ($mock_exception = Mockery::mock(ClientException::class))
             ->shouldReceive('getResponse')
@@ -48,10 +49,10 @@ class HandleBadRequestExceptionTest extends TestCase
         ($mock_response = Mockery::mock(ResponseInterface::class))
             ->shouldReceive('getHeader')
             ->once()
-            ->with('Accepts')
-            ->andReturn('application/json');
+            ->with('Accept')
+            ->andReturn(['application/json']);
 
-        $mock_response->shouldReceive('getResponse')
+        $mock_response->shouldReceive('getBody')
             ->once()
             ->andReturn('some-content');
 
@@ -74,10 +75,10 @@ class HandleBadRequestExceptionTest extends TestCase
         ($mock_response = Mockery::mock(ResponseInterface::class))
             ->shouldReceive('getHeader')
             ->once()
-            ->with('Accepts')
-            ->andReturn('application/json');
+            ->with('Accept')
+            ->andReturn(['application/json']);
 
-        $mock_response->shouldReceive('getResponse')
+        $mock_response->shouldReceive('getBody')
             ->once()
             ->andReturn(json_encode(['errors' => []]));
 
@@ -87,7 +88,7 @@ class HandleBadRequestExceptionTest extends TestCase
             ->andReturn($mock_response);
 
         $this->assertInstanceOf(
-            UnknownException::class,
+            UnknownDomainException::class,
             (new Stub())->handleBadRequestException($mock_exception)
         );
     }
@@ -101,10 +102,10 @@ class HandleBadRequestExceptionTest extends TestCase
         ($mock_response = Mockery::mock(ResponseInterface::class))
             ->shouldReceive('getHeader')
             ->once()
-            ->with('Accepts')
-            ->andReturn('application/json');
+            ->with('Accept')
+            ->andReturn(['application/json']);
 
-        $mock_response->shouldReceive('getResponse')
+        $mock_response->shouldReceive('getBody')
             ->once()
             ->andReturn(json_encode(['errors' => [$error]]));
 
@@ -157,8 +158,8 @@ class HandleBadRequestExceptionTest extends TestCase
         ($mock_response = Mockery::mock(ResponseInterface::class))
             ->shouldReceive('getHeader')
             ->once()
-            ->with('Accepts')
-            ->andReturn('application/json');
+            ->with('Accept')
+            ->andReturn(['application/json']);
 
         $errors = array_map(
             function ($error) {
@@ -168,7 +169,7 @@ class HandleBadRequestExceptionTest extends TestCase
         );
         $errors = array_values($errors);
 
-        $mock_response->shouldReceive('getResponse')
+        $mock_response->shouldReceive('getBody')
             ->once()
             ->andReturn(json_encode(['errors' => $errors]));
 
