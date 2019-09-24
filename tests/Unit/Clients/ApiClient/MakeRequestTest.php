@@ -7,8 +7,8 @@ use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\GuzzleException;
 use Mockery;
 use ReflectionClass;
-use ReflectionProperty;
 use RuntimeException;
+use Psr\Http\Message\RequestInterface;
 use Tests\Unit\TestCase;
 use Xedi\SendGrid\Clients\ApiClient;
 use Xedi\SendGrid\Clients\HttpResponse;
@@ -28,16 +28,17 @@ class MakeRequestTest extends TestCase
 
     /**
      * @test
-     * @group icare
      */
     public function catchesConnectionExceptions()
     {
-        $this->markTestSkipped('@CS - Test broken for some reason');
-
-        ($mock_exception = Mockery::mock(ConnectException::class))
-            ->shouldReceive('getMessage')
-            ->once()
-            ->andReturn('a message');
+        $mock_exception = Mockery::mock(
+            ConnectException::class,
+            [
+                'a message',
+                Mockery::mock(RequestInterface::class)
+            ]
+        )
+            ->makePartial();
 
         ($mock_guzzle_client = Mockery::mock(GuzzleClient::class))
             ->shouldReceive('request')
@@ -48,9 +49,7 @@ class MakeRequestTest extends TestCase
         $api_client = (new ReflectionClass(ApiClient::class))
             ->newInstanceWithoutConstructor();
 
-        ($reflection = new ReflectionProperty(ApiClient::class, 'client'))
-            ->setAccessible(true);
-        $reflection->setValue($api_client, $mock_guzzle_client);
+        $api_client->client = $mock_guzzle_client;
 
         $this->expectException(SendGridUnreacheableException::class);
 
@@ -70,12 +69,8 @@ class MakeRequestTest extends TestCase
      */
     public function catchesThrowableExceptions()
     {
-        $this->markTestSkipped('@CS - Test broken for some reason');
-
-        ($mock_exception = Mockery::mock(RuntimeException::class))
-            ->shouldReceive('getMessage')
-            ->once()
-            ->andReturn('a message');
+        $mock_exception = Mockery::mock(RuntimeException::class, ['a message'])
+            ->makePartial();
 
         ($mock_guzzle_client = Mockery::mock(GuzzleClient::class))
             ->shouldReceive('request')
@@ -86,9 +81,7 @@ class MakeRequestTest extends TestCase
         $api_client = (new ReflectionClass(ApiClient::class))
             ->newInstanceWithoutConstructor();
 
-        ($reflection = new ReflectionProperty(ApiClient::class, 'client'))
-            ->setAccessible(true);
-        $reflection->setValue($api_client, $mock_guzzle_client);
+        $api_client->client = $mock_guzzle_client;
 
         $this->expectException(BadDeveloperException::class);
 

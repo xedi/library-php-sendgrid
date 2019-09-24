@@ -5,6 +5,7 @@ namespace Xedi\SendGrid\Clients;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\GuzzleException;
+use Throwable;
 use Xedi\SendGrid\Clients\Concerns\HandlesExceptions;
 use Xedi\SendGrid\Clients\HttpResponse;
 use Xedi\SendGrid\Contracts\Clients\Client as ClientContract;
@@ -151,7 +152,7 @@ class ApiClient implements ClientContract
                 $response->getStatusCode(),
                 $response->getHeaders()
             );
-        } catch (ConnectException $exception) {
+        } catch (ConnectException $exception) {var_dump('here');
             throw SendGridUnreacheableException::fromConnectionException(
                 $exception
             );

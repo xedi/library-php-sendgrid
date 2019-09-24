@@ -40,7 +40,6 @@ class HandleExceptionTest extends TestCase
 
     /**
      * @test
-     * @group icare
      */
     public function handlesUnknownException()
     {
