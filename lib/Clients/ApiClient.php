@@ -152,7 +152,7 @@ class ApiClient implements ClientContract
                 $response->getStatusCode(),
                 $response->getHeaders()
             );
-        } catch (ConnectException $exception) {var_dump('here');
+        } catch (ConnectException $exception) {
             throw SendGridUnreacheableException::fromConnectionException(
                 $exception
             );
