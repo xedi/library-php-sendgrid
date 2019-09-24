@@ -18,8 +18,6 @@ class HandleExceptionTest extends TestCase
      */
     public function handlesClientException()
     {
-        $this->markTestSkipped('@CS - Test broken for some reason');
-
         $mock_exception = Mockery::mock(ClientException::class);
         $mock_local_exception = Mockery::mock(ExceptionContract::class);
 
@@ -30,7 +28,7 @@ class HandleExceptionTest extends TestCase
             @CS - 23/09/2019
          */
         ($stub = Mockery::mock(Stub::class)->makePartial())
-            ->shouldReceive('handlesClientException')
+            ->shouldReceive('handleClientException')
             ->once()
             ->with($mock_exception)
             ->andReturn($mock_local_exception);
@@ -42,18 +40,16 @@ class HandleExceptionTest extends TestCase
 
     /**
      * @test
+     * @group icare
      */
     public function handlesUnknownException()
     {
-        $this->markTestSkipped('@CS - Test broken for some reason');
-
-        ($mock_exception = Mockery::mock(
+        $mock_exception = Mockery::mock(
             GuzzleException::class,
-            RuntimeException::class
-        ))
-            ->shouldReceive('getMessage')
-            ->once()
-            ->andReturn('its not important');
+            RuntimeException::class,
+            ['its not important']
+        )
+            ->makePartial();
 
         $this->assertInstanceOf(
             UnknownException::class,

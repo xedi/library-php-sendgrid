@@ -32,8 +32,8 @@ trait HandlesExceptions
      */
     protected function handleException(GuzzleException $exception): ExceptionContract
     {
-        switch (get_class($exception)) {
-            case (ClientException::class):
+        switch (true) {
+            case ($exception instanceof ClientException):
                 return $this->handleClientException($exception);
                 break;
             default:
