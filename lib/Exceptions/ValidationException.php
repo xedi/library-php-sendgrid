@@ -19,7 +19,7 @@ abstract class ValidationException extends UnexpectedValueException implements E
      *
      * @var integer
      */
-    protected int $code = 422;
+    protected $code = 422;
 
     /**
      * Mailable that caused the exception

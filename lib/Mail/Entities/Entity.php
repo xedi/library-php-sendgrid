@@ -96,12 +96,15 @@ abstract class Entity implements JsonSerializable, Arrayable
      */
     public function toArray()
     {
-        return array_map($this->properties, function ($property) {
-            if (is_object($property) && $property instanceof Arrayable) {
-                return $property->toArray();
-            }
+        return array_map(
+            function ($property) {
+                if (is_object($property) && $property instanceof Arrayable) {
+                    return $property->toArray();
+                }
 
-            return $property;
-        });
+                return $property;
+            },
+            $this->properties
+        );
     }
 }

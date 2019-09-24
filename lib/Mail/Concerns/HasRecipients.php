@@ -110,10 +110,10 @@ trait HasRecipients
          return [
             'personalizations' => [
                 'to' => array_map(
-                    $this->recipients,
                     function ($recipient) {
                         return $recipient->toArray();
-                    }
+                    },
+                    $this->recipients
                 )
             ]
          ];

@@ -27,7 +27,7 @@ class ApiClient implements ClientContract
      *
      * @var GuzzleClient $client
      */
-    private $client;
+    public $client;
 
     /**
      * ApiClient constructor.
@@ -49,20 +49,6 @@ class ApiClient implements ClientContract
                 $options
             )
         );
-    }
-
-    /**
-     * Set Client
-     *
-     * @param GuzzleClient $client A GuzzleClient instance
-     *
-     * @return static
-     */
-    public function setClient(GuzzleClient $client): self
-    {
-        $this->client = $client;
-
-        return $this;
     }
 
     /**
@@ -94,7 +80,7 @@ class ApiClient implements ClientContract
      */
     public function post(string $uri, array $data = [], array $headers = []): ResponseContract
     {
-        return $this->makeRequest('POST', $uri, $params, $headers);
+        return $this->makeRequest('POST', $uri, $data, $headers);
     }
 
     /**
@@ -160,7 +146,11 @@ class ApiClient implements ClientContract
                 )
             );
 
-            return new HttpResponse((string) $response->getBody());
+            return new HttpResponse(
+                (string) $response->getBody(),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            );
         } catch (ConnectException $exception) {
             throw SendGridUnreacheableException::fromConnectionException(
                 $exception

@@ -105,10 +105,10 @@ trait HasContent
     {
         return [
             'content' => array_map(
-                $this->content,
                 function ($content) {
                     return $content->toArray();
-                }
+                },
+                $this->content
             )
         ];
     }

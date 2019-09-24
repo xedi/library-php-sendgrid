@@ -2,7 +2,7 @@
 
 namespace Xedi\SendGrid\Mail\Concerns;
 
-use Xedi\SenderGrid\Exceptions\SenderValidationException;
+use Xedi\SendGrid\Exceptions\SenderValidationException;
 use Xedi\SendGrid\Mail\Entities\Sender;
 
 /**
@@ -62,7 +62,7 @@ trait HasSender
             throw new SenderValidationException('Missing Sender', $this);
         }
 
-        if ($this->from instanceof Sender) {
+        if (! $this->from instanceof Sender) {
             throw new SenderValidationException('Invalid Sender', $this);
         }
 

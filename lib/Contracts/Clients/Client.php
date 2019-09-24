@@ -15,15 +15,6 @@ use Xedi\SendGrid\Contracts\Clients\Response;
 interface Client
 {
     /**
-     * Set Client
-     *
-     * @param GuzzleClient $client HTTP Client
-     *
-     * @return static
-     */
-    public function setClient(GuzzleClient $client);
-
-    /**
      * Perform a GET request
      *
      * @param string $uri     Relative URI
