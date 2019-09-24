@@ -28,7 +28,7 @@ abstract class DomainException extends BaseDomainException implements ExceptionC
      * @param GuzzleException $previous The origin exception
      * @param int|integer     $code     Status code to report
      */
-    public function __construct(object $error, GuzzleException $previous, int $code = 422)
+    public function __construct($error, GuzzleException $previous, int $code = 422)
     {
         parent::__construct(
             $error->message,

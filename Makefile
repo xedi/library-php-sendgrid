@@ -41,3 +41,27 @@ phpcs:
 	--volume $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))):/web/html \
 	--user $(id -u):$(id -g) \
 	xediltd/phpcs:latest
+
+
+# Testing Tools
+
+.PHONY: test unit-test integration-test
+.SILENT: test unit-test integration-test
+
+test:
+	docker run --rm --interactive --tty \
+	--volume $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))):/web/html \
+	--user $(id -u):$(id -g) \
+	xediltd/phpunit:latest vendor/bin/phpunit --testdox
+
+unit-test:
+	docker run --rm --interactive --tty \
+	--volume $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))):/web/html \
+	--user $(id -u):$(id -g) \
+	xediltd/phpunit:latest vendor/bin/phpunit --testsuite Unit --testdox
+
+integration-test:
+	docker run --rm --interactive --tty \
+	--volume $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))):/web/html \
+	--user $(id -u):$(id -g) \
+	xediltd/phpunit:latest vendor/bin/phpunit --testsuite Integration --testdox

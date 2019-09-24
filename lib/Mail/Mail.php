@@ -52,7 +52,7 @@ class Mail implements Mailable
             $this->buildContent(),
             $this->buildRecipients(),
             $this->buildSender(),
-            $this->buildSubject(),
+            $this->buildSubject()
         );
 
         return $client->post('mail/send', $data);

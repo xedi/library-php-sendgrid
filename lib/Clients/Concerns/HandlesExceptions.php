@@ -114,7 +114,7 @@ trait HandlesExceptions
      *
      * @return ExceptionContract Am implementation of the local exception contract
      */
-    private function handleSendGridError(object $error, GuzzleException $exception)
+    private function handleSendGridError($error, GuzzleException $exception)
     {
         if (Str::contains($error->field, '.')) {
             $parts = [];
