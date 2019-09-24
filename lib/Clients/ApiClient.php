@@ -3,6 +3,7 @@
 namespace Xedi\SendGrid\Clients;
 
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\GuzzleException;
 use Xedi\SendGrid\Clients\Concerns\HandlesExceptions;
 use Xedi\SendGrid\Clients\HttpResponse;
@@ -71,6 +72,8 @@ class ApiClient implements ClientContract
      * @param array  $params  Parameters to form the QueryString
      * @param array  $headers Custom headers
      *
+     * @codeCoverageIgnore
+     *
      * @return ResponseContract
      */
     public function get(string $uri, array $params = [], array $headers = []): ResponseContract
@@ -84,6 +87,8 @@ class ApiClient implements ClientContract
      * @param string $uri     Relative URI
      * @param array  $data    Data to add to the requests body
      * @param array  $headers Custom headers
+     *
+     * @codeCoverageIgnore
      *
      * @return ResponseContract
      */
@@ -99,6 +104,8 @@ class ApiClient implements ClientContract
      * @param array  $data    Data to add to the requests body
      * @param array  $headers Custom headers
      *
+     * @codeCoverageIgnore
+     *
      * @return ResponseContract
      */
     public function patch(string $uri, array $data = [], array $headers = []): ResponseContract
@@ -112,6 +119,8 @@ class ApiClient implements ClientContract
      * @param string $uri     Relative URI
      * @param array  $data    Data to add to the requests body
      * @param array  $headers Custom headers
+     *
+     * @codeCoverageIgnore
      *
      * @return ResponseContract
      */
