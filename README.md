@@ -1,7 +1,7 @@
-# Status
-
 [![](https://github.com/xedi/library-php-sendgrid/workflows/Linting/badge.svg)](https://github.com/xedi/library-php-sendgrid/actions)
 [![](https://github.com/xedi/library-php-sendgrid/workflows/Unit%20Testing/badge.svg)](https://github.com/xedi/library-php-sendgrid/actions)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&identifier=208819381)](https://app.dependabot.com/accounts/xedi/repos/208819381)
+[![Packagist](https://img.shields.io/packagist/v/xedi/sendgrid.svg?logo=composer&labelColor=282d33&logoColor=white)](https://packagist.org/packages/xedi/sendgrid)
 
 # Table of Contents
 
@@ -23,10 +23,6 @@
 
 Add [XEDI][XEDI] SendGrid to your `composer.json` file either manually or using `composer require`.
 
-```shell
-composer require xedi/sendgrid
-```
-
 ```json
 {
     "require": {
@@ -35,7 +31,11 @@ composer require xedi/sendgrid
 }
 ```
 
-**We recommend the former option, let composer do it's thing**
+```shell
+composer require xedi/sendgrid
+```
+
+**We recommend the later option, let composer do it's thing**
 
 <a name="quick-start"></a>
 # Quick Start
@@ -68,14 +68,16 @@ composer require xedi/sendgrid
 <a name="about"></a>
 # About
 
-This library uses [SendGrids v3 HTTP API][SENDGRID_API_DOCS]. It builts on some of the limitations of the "official" library:
+This library uses [SendGrids v3 HTTP API][SENDGRID_API_DOCS]. It builts on some of the limitations of the "official" library such as:
 
 * Interacts with cURL directly limiting your ability to intercept requests during tests.
 * Exceptions aren't specific to the returned error.
 
-We employ [GuzzleHttp][GUZZLEHTTP] to act as our cURL wrapper giving off-loading responsibility of processing HTTP requests. Guzzle 6 provides a great utility for intercepting HTTP requests made through it's client; for more details [click here][GUZZLEHTTP_TESTING].
+We employ [GuzzleHttp][GUZZLEHTTP] to act as our cURL wrapper off-loading responsibility of processing HTTP requests. Guzzle 6 provides a great utility for intercepting HTTP requests made through it's client; for more details [click here][GUZZLEHTTP_TESTING].
 
-SendGrid only returns one error code if there is a problem with your payload! This is because SendGrid's API is not RESTful. Our library will attempt to return you contextual exceptions such as `Xedi\SendGrid\Exceptions\Domain\SubjectException` which would be thrown if SendGrid reports an issue with your Subject field. All exceptions can be identified using our `ExceptionContract` which all exceptions implement.
+SendGrid only returns one error code if there is a problem with your payload! This is because SendGrid's API is not RESTful. Our library will attempt to provide contextual exceptions such as `Xedi\SendGrid\Exceptions\Domain\SubjectException`, which would be thrown if SendGrid reports an issue with your subject field.
+
+All exceptions can be identified using our `ExceptionContract` which all exceptions implement.
 
 <a name="feature-requests"></a>
 # Feature Requests
@@ -85,7 +87,7 @@ This library was developed for an in-house project, and it's features will grow 
 <a name="security-vulnerabilities"></a>
 # Security Vulnerabilities
 
-We take security very seriously. If you spot something, please let us know by filing a Security Issue on our Github repository.
+We take security very seriously. If you spot something, please let us know by emailing use at [development@xedi.com][SECURITY_REPORTING_LINK].
 
 <!-- ############################# Reference Links ####################################### -->
 
@@ -94,3 +96,4 @@ We take security very seriously. If you spot something, please let us know by fi
 [GUZZLEHTTP_TESTING]: http://docs.guzzlephp.org/en/stable/testing.html
 [SENDGRID_API_DOCS]: https://sendgrid.com/docs/api-reference/
 [SENDGRID_API_KEY]: https://app.sendgrid.com/settings/api_keys
+[SECURITY_REPORTING_LINK]: mailto:development@xedi.com?subject=Security%20Vulnerability%20Found%20-%20Xedi%2FSendGrid
