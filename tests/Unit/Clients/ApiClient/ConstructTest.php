@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\Clients\ApiClient;
 
-use ReflectionProperty;
 use Tests\Unit\TestCase;
 use Xedi\SendGrid\Clients\ApiClient;
 
@@ -13,12 +12,7 @@ class ConstructTest extends TestCase
      */
     public function withoutOptions()
     {
-        $client = new ApiClient('api-key');
-
-        ($reflection = new ReflectionProperty(ApiClient::class, 'client'))
-            ->setAccessible(true);
-
-        $guzzle_client = $reflection->getValue($client);
+        $guzzle_client = (new ApiClient('api-key'))->client;
 
         $this->assertEquals(
             'Bearer api-key',
@@ -31,12 +25,7 @@ class ConstructTest extends TestCase
      */
     public function withOptions()
     {
-        $client = new ApiClient('api-key', [ 'base_uri' => 'https://test.com' ]);
-
-        ($reflection = new ReflectionProperty(ApiClient::class, 'client'))
-            ->setAccessible(true);
-
-        $guzzle_client = $reflection->getValue($client);
+        $guzzle_client = (new ApiClient('api-key', [ 'base_uri' => 'https://test.com' ]))->client;
 
         $this->assertEquals(
             'Bearer api-key',
