@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Clients\ApiClient;
+namespace Tests\Unit\Clients\ApiClient;
 
 use GuzzleHttp\Client as GuzzleClient;
 use Mockery;
 use ReflectionClass;
 use ReflectionProperty;
-use Tests\TestCase;
+use Tests\Unit\TestCase;
 use Xedi\SendGrid\Clients\ApiClient;
 
 class SetClientTest extends TestCase

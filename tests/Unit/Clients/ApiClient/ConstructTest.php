@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Clients\ApiClient;
+namespace Tests\Unit\Clients\ApiClient;
 
 use ReflectionProperty;
-use Tests\TestCase;
+use Tests\Unit\TestCase;
 use Xedi\SendGrid\Clients\ApiClient;
 
 class ConstructTest extends TestCase

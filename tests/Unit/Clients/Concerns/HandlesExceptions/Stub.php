@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Clients\Concerns\HandlesExceptions;
+namespace Tests\Unit\Clients\Concerns\HandlesExceptions;
 
 use Xedi\SendGrid\Clients\Concerns\HandlesExceptions;
 

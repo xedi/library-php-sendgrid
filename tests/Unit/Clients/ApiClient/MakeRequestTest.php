@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Clients\ApiClient;
+namespace Tests\Unit\Clients\ApiClient;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ConnectException;
@@ -9,7 +9,7 @@ use Mockery;
 use ReflectionClass;
 use ReflectionProperty;
 use RuntimeException;
-use Tests\TestCase;
+use Tests\Unit\TestCase;
 use Xedi\SendGrid\Clients\ApiClient;
 use Xedi\SendGrid\Clients\HttpResponse;
 use Xedi\SendGrid\Contracts\Exception as ExceptionContract;

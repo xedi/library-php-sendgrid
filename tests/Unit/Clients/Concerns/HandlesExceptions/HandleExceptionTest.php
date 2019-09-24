@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Clients\Concerns\HandlesExceptions;
+namespace Tests\Unit\Clients\Concerns\HandlesExceptions;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use Mockery;
 use RuntimeException;
-use Tests\Clients\Concerns\HandlesExceptions\Stub;
-use Tests\TestCase;
+use Tests\Unit\Clients\Concerns\HandlesExceptions\Stub;
+use Tests\Unit\TestCase;
 use Xedi\SendGrid\Contracts\Exception as ExceptionContract;
 use Xedi\SendGrid\Exceptions\Clients\UnknownException;
 

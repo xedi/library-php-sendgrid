@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\SendGrid;
+namespace Tests\Unit\SendGrid;
 
 use Tests\TestCase;
 use Xedi\SendGrid\SendGrid;
