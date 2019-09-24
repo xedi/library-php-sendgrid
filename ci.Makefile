@@ -20,3 +20,14 @@ phpcs:
 	--volume $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))):/web/html \
 	--user $(id -u):$(id -g) \
 	xediltd/phpcs:ci-latest
+
+# PHPUnit
+
+.PHONY: phpunit
+.SILENT: phpunit
+
+phpunit:
+	docker run --rm \
+	--volume $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))):/web/html \
+	--user $(id -u):$(id -g) \
+	xediltd/phpunit:latest
