@@ -5,11 +5,11 @@ namespace Xedi\SendGrid\Exceptions\Domain;
 use Xedi\SendGrid\Exceptions\DomainException;
 
 /**
- * Exception for Personalization properties
+ * FromException
  *
- * @package Xedi\SendGrid\Exceptions\Domain
+ * @package Xedi\SendGrid\Exceptions\Domain;
  * @author  Chris Smith <chris@xedi.com>
  */
-class PersonalizationException extends DomainException
+class FromException extends DomainException
 {
 }

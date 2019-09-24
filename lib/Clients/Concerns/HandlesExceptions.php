@@ -13,6 +13,7 @@ use Xedi\SendGrid\Exceptions\Clients\UndecodedClientException;
 use Xedi\SendGrid\Exceptions\Clients\UnknownException;
 use Xedi\SendGrid\Exceptions\Domain\FailedDecodingException;
 use Xedi\SendGrid\Exceptions\Domain\MultipleDomainErrorsException;
+use Xedi\SendGrid\Exceptions\Domain\UnknownException as UnknownDomainException;
 
 /**
  * HandleExceptions Concern
@@ -69,11 +70,11 @@ trait HandlesExceptions
     {
         $response = $exception->getResponse();
 
-        if ($response->getHeader('Accepts') !== 'application/json') {
+        if (! in_array('application/json', $response->getHeader('Accept'))) {
             return new UndecodedClientException($exception);
         }
 
-        $body = json_decode((string) $response->getResponse());
+        $body = json_decode((string) $response->getBody());
         if ($body === null && json_last_error()) {
             return new FailedDecodingException(
                 json_last_error_msg(),
@@ -86,7 +87,7 @@ trait HandlesExceptions
 
         switch (count($errors)) {
             case 0:
-                return $this->handleUnknownException($exception);
+                return $this->handleUnknownDomainException($exception);
                 break;
             case 1:
                 return $this->handleSendGridError($errors[0], $exception);
@@ -129,8 +130,13 @@ trait HandlesExceptions
             return (new ReflectionClass($class_name))
                 ->newInstance($error, $exception);
         } catch (ReflectionException $not_found_exception) {
-            return $this->handleUnknownException($exception);
+            return $this->handleUnknownDomainException($exception);
         }
+    }
+
+    private function handleUnknownDomainException(GuzzleException $exception)
+    {
+        return new UnknownDomainException($exception);
     }
 
     /**
