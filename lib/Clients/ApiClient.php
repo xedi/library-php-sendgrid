@@ -9,7 +9,7 @@ use Xedi\SendGrid\Clients\HttpResponse;
 use Xedi\SendGrid\Contracts\Clients\Client as ClientContract;
 use Xedi\SendGrid\Contracts\Clients\Response as ResponseContract;
 use Xedi\SendGrid\Exceptions\BadDeveloperException;
-use Xedi\SendGrid\Exceptions\SendGridUnreacheable as SendGridUnreacheableException;
+use Xedi\SendGrid\Exceptions\SendGridUnreacheableException;
 
 /**
  * Class ApiClient
@@ -129,7 +129,7 @@ class ApiClient implements ClientContract
      * @param array  $headers HTTP Headers
      *
      * @throws Xedi\Exceptions\SendGridUnreachableException
-     * @throws Xedi\Exceptions\DeveloperException
+     * @throws Xedi\Exceptions\BadDeveloperException
      *
      * @return ResponseContract
      */
@@ -147,7 +147,7 @@ class ApiClient implements ClientContract
                     [
                         'headers' => $headers
                     ],
-                    $params
+                    $data
                 )
             );
 
