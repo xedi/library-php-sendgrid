@@ -134,6 +134,13 @@ trait HandlesExceptions
         }
     }
 
+    /**
+     * Handles Unrecognised Guzzle Exceptions which relate to a domain
+     *
+     * @param GuzzleException $exception Original Exception
+     *
+     * @return UnknownDomainException
+     */
     private function handleUnknownDomainException(GuzzleException $exception)
     {
         return new UnknownDomainException($exception);

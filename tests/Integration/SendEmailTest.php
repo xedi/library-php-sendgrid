@@ -84,7 +84,8 @@ class SendEmailTest extends TestCase
                             [
                                 'field' => 'content',
                                 'help' => 'https://help.docs',
-                                'message' => 'The content param is required unless you are using a transactional template and have defined a template_ID.',
+                                'message' => 'The content param is required unless you are using a transactional ' .
+                                    'template and have defined a template_ID.',
                             ],
                         ]
                     ),
@@ -93,15 +94,16 @@ class SendEmailTest extends TestCase
             ],
             'content value is required' => [
                 [
-                   $this->getMockErrorResponse(
+                    $this->getMockErrorResponse(
                         [
                             [
                                 'field' => 'content.value',
                                 'help' => 'https://help.docs',
-                                'message' => 'A content value is required, this is the content of the email you are sending.'
+                                'message' => 'A content value is required, this is the content of the email ' .
+                                    'you are sending.'
                             ]
                         ]
-                   )
+                    )
                 ],
                 DomainExceptions\Content\ValueException::class
             ],
@@ -112,7 +114,10 @@ class SendEmailTest extends TestCase
                             [
                                 'field' => 'from',
                                 'help' => 'https://help.docs',
-                                'message' => 'The from object must at least have an email parameter with a valid email address and may also contain a name parameter. e.g. {"email": "example@example.com"} or {"email": "example@example.com", "name": "Example Recipient"}'
+                                'message' => 'The from object must at least have an email parameter with a valid ' .
+                                    'email address and may also contain a name parameter. ' .
+                                    'e.g. {"email": "example@example.com"} or {"email": "example@example.com", ' .
+                                    '"name": "Example Recipient"}'
                             ]
                         ]
                     )
