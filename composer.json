@@ -24,7 +24,10 @@
     "autoload": {
         "psr-4": {
             "Xedi\\SendGrid\\": "lib/"
-        }
+        },
+        "files": [
+            "lib/Support/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -32,9 +35,6 @@
         "classmap": [
             "lib/",
             "tests/"
-        ],
-        "files": [
-            "lib/Support/helpers.php"
         ]
     }
 }
