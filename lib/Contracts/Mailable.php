@@ -9,8 +9,8 @@ use Xedi\SendGrid\Mail\Entities\Sender;
 /**
  * Mailable Contract
  *
- * @package  Xedi\SendGrid\Contracts
- * @author   Chris Smith <chris@xedi.com>
+ * @package Xedi\SendGrid\Contracts
+ * @author  Chris Smith <chris@xedi.com>
  */
 interface Mailable
 {
