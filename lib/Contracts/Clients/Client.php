@@ -8,7 +8,6 @@ use Xedi\SendGrid\Contracts\Clients\Response;
 /**
  * Client Contract
  *
- * @internal
  * @package  Xedi\SendGrid\Contracts\Clients
  * @author   Chris Smith <chris@xedi.com>
  */
