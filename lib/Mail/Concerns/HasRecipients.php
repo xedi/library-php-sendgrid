@@ -107,15 +107,17 @@ trait HasRecipients
      */
     public function buildRecipients(): array
     {
-         return [
+        return [
             'personalizations' => [
-                array_map(
-                    function ($recipient) {
-                        return ['to' => $recipient->toArray()];
-                    },
-                    $this->recipients
-                )
+                [
+                    "to" => array_map(
+                        function ($recipient) {
+                            return $recipient->toArray();
+                        },
+                        $this->recipients
+                    )
+                ]
             ]
-         ];
+        ];
     }
 }
