@@ -70,7 +70,7 @@ trait HandlesExceptions
     {
         $response = $exception->getResponse();
 
-        if (! in_array('application/json', $response->getHeader('Accept'))) {
+        if (! in_array('application/json', $response->getHeader('Content-Type'))) {
             return new UndecodedClientException($exception);
         }
 

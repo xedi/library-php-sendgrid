@@ -146,7 +146,7 @@ class SendEmailTest extends TestCase
         return new Response(
             400,
             [
-                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
             ],
             json_encode(
                 [
