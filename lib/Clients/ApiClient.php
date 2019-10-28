@@ -139,12 +139,10 @@ class ApiClient implements ClientContract
             $response = $this->client->request(
                 $method,
                 $uri,
-                array_merge(
-                    [
-                        'headers' => $headers
-                    ],
-                    $data
-                )
+                [
+                    'headers' => $headers,
+                    'json' => $data
+                ]
             );
 
             return new HttpResponse(
