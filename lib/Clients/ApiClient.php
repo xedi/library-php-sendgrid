@@ -134,8 +134,7 @@ class ApiClient implements ClientContract
         string $uri,
         array $data = [],
         array $headers = []
-    ): ResponseContract
-    {
+    ): ResponseContract {
         try {
             $response = $this->client->request(
                 $method,
