@@ -109,9 +109,9 @@ trait HasRecipients
     {
          return [
             'personalizations' => [
-                'to' => array_map(
+                array_map(
                     function ($recipient) {
-                        return $recipient->toArray();
+                        return ['to' => $recipient->toArray()];
                     },
                     $this->recipients
                 )
