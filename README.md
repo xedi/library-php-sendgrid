@@ -48,12 +48,12 @@ composer require xedi/sendgrid
     use Xedi\SendGrid\SendGrid;
 
     SendGrid::setClient(
-        SendGrid::getApiClient($api_key);
+        SendGrid::getApiClient($api_key)
     );
 
     ($mailable = SendGrid::prepareMail())
         ->setSender('you@email.com', 'Joe Blogs')
-        ->setSubject('Checkout XEDI\'s SendGrid libray!')
+        ->setSubject('Checkout XEDI\'s SendGrid library!')
         ->addTextContent('Hey,\n\rI found this great SendGrid library!')
         ->addHtmlContent('<body>Hey,<br/>I found this great SendGrid library!</body>')
         ->addRecipient('john.smith@email.com', 'John Smith');

@@ -55,6 +55,6 @@ class Mail implements Mailable
             $this->buildSubject()
         );
 
-        return $client->post('mail/send', $data);
+        return $client->post('v3/mail/send', $data);
     }
 }
