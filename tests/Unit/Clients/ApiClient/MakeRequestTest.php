@@ -43,7 +43,7 @@ class MakeRequestTest extends TestCase
         ($mock_guzzle_client = Mockery::mock(GuzzleClient::class))
             ->shouldReceive('request')
             ->once()
-            ->with('GET', 'an/endpoint', [ 'headers' => [] ])
+            ->with('GET', 'an/endpoint', [ 'headers' => [], 'json' => [] ])
             ->andThrows($mock_exception);
 
         $api_client = (new ReflectionClass(ApiClient::class))
@@ -75,7 +75,7 @@ class MakeRequestTest extends TestCase
         ($mock_guzzle_client = Mockery::mock(GuzzleClient::class))
             ->shouldReceive('request')
             ->once()
-            ->with('GET', 'an/endpoint', [ 'headers' => [] ])
+            ->with('GET', 'an/endpoint', [ 'headers' => [], 'json' => [] ])
             ->andThrows($mock_exception);
 
         $api_client = (new ReflectionClass(ApiClient::class))

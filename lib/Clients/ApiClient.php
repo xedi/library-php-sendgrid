@@ -41,7 +41,7 @@ class ApiClient implements ClientContract
         $this->client = new GuzzleClient(
             array_merge(
                 [
-                    'base_uri' => 'https://api.sendgrid.com/v3',
+                    'base_uri' => 'https://api.sendgrid.com',
                     'headers' => [
                         'Authorization' => "Bearer $api_key",
                         'Content-Type' => 'application/json'
@@ -139,16 +139,14 @@ class ApiClient implements ClientContract
             $response = $this->client->request(
                 $method,
                 $uri,
-                array_merge(
-                    [
-                        'headers' => $headers
-                    ],
-                    $data
-                )
+                [
+                    'headers' => $headers,
+                    'json' => $data
+                ]
             );
 
             return new HttpResponse(
-                (string) $response->getBody(),
+                (string)$response->getBody(),
                 $response->getStatusCode(),
                 $response->getHeaders()
             );

@@ -27,7 +27,7 @@ class HandleBadRequestExceptionTest extends TestCase
         ($mock_response = Mockery::mock(ResponseInterface::class))
             ->shouldReceive('getHeader')
             ->once()
-            ->with('Accept')
+            ->with('Content-Type')
             ->andReturn(['text/plain']);
 
         ($mock_exception = Mockery::mock(ClientException::class))
@@ -49,7 +49,7 @@ class HandleBadRequestExceptionTest extends TestCase
         ($mock_response = Mockery::mock(ResponseInterface::class))
             ->shouldReceive('getHeader')
             ->once()
-            ->with('Accept')
+            ->with('Content-Type')
             ->andReturn(['application/json']);
 
         $mock_response->shouldReceive('getBody')
@@ -75,7 +75,7 @@ class HandleBadRequestExceptionTest extends TestCase
         ($mock_response = Mockery::mock(ResponseInterface::class))
             ->shouldReceive('getHeader')
             ->once()
-            ->with('Accept')
+            ->with('Content-Type')
             ->andReturn(['application/json']);
 
         $mock_response->shouldReceive('getBody')
@@ -102,7 +102,7 @@ class HandleBadRequestExceptionTest extends TestCase
         ($mock_response = Mockery::mock(ResponseInterface::class))
             ->shouldReceive('getHeader')
             ->once()
-            ->with('Accept')
+            ->with('Content-Type')
             ->andReturn(['application/json']);
 
         $mock_response->shouldReceive('getBody')
@@ -158,7 +158,7 @@ class HandleBadRequestExceptionTest extends TestCase
         ($mock_response = Mockery::mock(ResponseInterface::class))
             ->shouldReceive('getHeader')
             ->once()
-            ->with('Accept')
+            ->with('Content-Type')
             ->andReturn(['application/json']);
 
         $errors = array_map(
