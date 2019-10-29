@@ -59,6 +59,14 @@ class MakeRequestTest extends TestCase
     /**
      * @test
      */
+    public function catchesServerExceptions()
+    {
+        $this->markTestIncomplete('Not implemented yet');
+    }
+
+    /**
+     * @test
+     */
     public function catchesGuzzleExceptions()
     {
         $this->markTestIncomplete('Not implemented yet');
