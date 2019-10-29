@@ -7,6 +7,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Mockery;
 use RuntimeException;
 use Tests\Unit\Clients\Concerns\HandlesExceptions\Stub;
+use Tests\Unit\Clients\Concerns\HandlesExceptions\StubException;
 use Tests\Unit\TestCase;
 use Xedi\SendGrid\Contracts\Exception as ExceptionContract;
 use Xedi\SendGrid\Exceptions\Clients\UnknownException;
@@ -43,16 +44,11 @@ class HandleExceptionTest extends TestCase
      */
     public function handlesUnknownException()
     {
-        $mock_exception = Mockery::mock(
-            GuzzleException::class,
-            RuntimeException::class,
-            ['its not important']
-        )
-            ->makePartial();
+        $stub_exception = new StubException('it doesn\'t matter');
 
         $this->assertInstanceOf(
             UnknownException::class,
-            (new Stub())->handleException($mock_exception)
+            (new Stub())->handleException($stub_exception)
         );
     }
 }
