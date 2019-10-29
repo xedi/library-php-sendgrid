@@ -1,0 +1,11 @@
+/.dependabot export-ignore
+/.editorconfig export-ignore
+/.gitattributes export-ignore
+/.github export-ignore
+/.gitignore export-ignore
+/ci.Makefile export-ignore
+/composer.lock export-ignore
+/Makefile export-ignore
+/phpcs.xml export-ignore
+/phpunit.xml export-ignore
+/tests export-ignore
