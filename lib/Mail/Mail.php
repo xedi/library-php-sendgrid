@@ -41,7 +41,7 @@ class Mail implements Mailable
     /**
      * Send the Mailable
      *
-     * @param Client\Client $client Transmission Adapter
+     * @param Client\Client $client Transmission Adapters
      *
      * @return Response An implementation of the Response contract
      */
