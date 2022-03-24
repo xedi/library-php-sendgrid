@@ -9,6 +9,7 @@ use Xedi\SendGrid\Mail\Concerns\HasContent;
 use Xedi\SendGrid\Mail\Concerns\HasRecipients;
 use Xedi\SendGrid\Mail\Concerns\HasSender;
 use Xedi\SendGrid\Mail\Concerns\HasSubject;
+use Xedi\SendGrid\Mail\Concerns\HasAttachment;
 
 /**
  * Class Mail
@@ -18,6 +19,7 @@ use Xedi\SendGrid\Mail\Concerns\HasSubject;
  */
 class Mail implements Mailable
 {
+    use HasAttachment;
     use HasContent;
     use HasRecipients;
     use HasSender;
@@ -54,6 +56,10 @@ class Mail implements Mailable
             $this->buildSender(),
             $this->buildSubject()
         );
+
+        if ($this->hasAttachment()) {
+            $data = array_merge($data, $this->buildAttachment());
+        }
 
         return $client->post('v3/mail/send', $data);
     }

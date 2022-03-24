@@ -219,4 +219,22 @@ interface Mailable
      * @return string API data
      */
     public function buildSubject(): array;
+
+    /**
+     * Set Attachment
+     *
+     * @param $attachment string  attachment file object
+     * @param $mime_type  string  attachment mime type
+     * @param $name       string  attachment filename
+     *
+     * @return mixed
+     */
+    public function setAttachment(string $attachment, string $mime_type, string $name);
+
+    /**
+     * Build Attachment
+     *
+     * @return array
+     */
+    public function buildAttachment();
 }
