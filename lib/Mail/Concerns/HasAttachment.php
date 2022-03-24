@@ -12,6 +12,15 @@ trait HasAttachment
 {
     protected $attachments = [];
 
+    /**
+     * Set Attachment
+     *
+     * @param $attachment string attachment file as string
+     * @param $mime_type  string mime type
+     * @param $name       string name
+     *
+     * @return $this
+     */
     public function setAttachment($attachment, $mime_type, $name)
     {
         $toAttach = new \StdClass();
@@ -24,6 +33,11 @@ trait HasAttachment
         return $this;
     }
 
+    /**
+     * Has Attachment
+     *
+     * @return bool
+     */
     public function hasAttachment(): bool
     {
         return count($this->attachments) > 0;
